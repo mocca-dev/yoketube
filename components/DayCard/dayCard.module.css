@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.date {
+  color: var(--fg-secondary);
+  font-weight: 400;
+}
+
+.main {
+  height: calc(100% - 100px);
+  padding: var(--side-padding);
+  background-color: var(--dark-primary);
+  border-radius: var(--border-radius);
+}

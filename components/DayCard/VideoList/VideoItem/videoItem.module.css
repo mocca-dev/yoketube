@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.thumbnail {
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 0.9rem;
+}
+
+.channelName {
+  font-size: 0.7rem;
+  color: var(--fg-secondary);
+}
+
+.duration {
+  font-size: 0.9rem;
+  text-align: right;
+}

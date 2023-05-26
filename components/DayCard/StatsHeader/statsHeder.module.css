@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.statName {
+  color: var(--fg-secondary);
+}
+
+/* .statContent {
+
+} */

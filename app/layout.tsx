@@ -1,7 +1,12 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Roboto_Condensed } from 'next/font/google';
+import styles from './page.module.css';
+import Header from '@/components/Header/Header';
 
-const inter = Inter({ subsets: ['latin'] });
+const roboto_Condensed = Roboto_Condensed({
+  weight: ['300', '400', '700'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: 'YokeTube',
@@ -15,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${roboto_Condensed.className} ${styles.body}`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
