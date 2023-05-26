@@ -20,6 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="apple-touch-icon" href="/ios/icon-512x512.png"></link>
+      <meta name="theme-color" content="#1e1e1e" />
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+      />
+      <link rel="icon" href="/favicon.ico" />
       <body className={`${roboto_Condensed.className} ${styles.body}`}>
         <Header />
         {children}
