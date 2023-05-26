@@ -3,6 +3,7 @@ import styles from './dayCard.module.css';
 import StatsHeader from './StatsHeader/StatsHeader';
 import VideoList from './VideoList/VideoList';
 import PlayButton from './PlayButton/PlayButton';
+import BackPannel from './BackPannel/BackPannel';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -19,6 +20,7 @@ export const DayCard = ({}: DayCardProps) => {
         <StatsHeader />
         <VideoList />
       </main>
+      <BackPannel />
     </>
   );
 };

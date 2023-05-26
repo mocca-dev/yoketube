@@ -1,0 +1,24 @@
+.container {
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  height: 100px;
+  width: calc(100% - 10px);
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  bottom: 20px;
+}
+
+.buttonsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 20px 30px;
+}
+
+.buttonsBar svg {
+  cursor: pointer;
+}

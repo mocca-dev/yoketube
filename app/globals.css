@@ -20,12 +20,11 @@ body {
   font-size: 16px;
   --border-radius: 12px;
   --bg-dark: #101014;
+  --bg-light: #1b1b1b;
   --dark-primary: #2b2b2d;
   --fg-primary: white;
   --fg-secondary: #71717d;
   --side-padding: 15px;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  
-}*/
+/* @media (prefers-color-scheme: dark) {}*/
