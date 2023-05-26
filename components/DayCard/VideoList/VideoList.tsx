@@ -1,5 +1,4 @@
 import { HTMLAttributes } from 'react';
-import Image from 'next/image';
 import styles from './videoList.module.css';
 import VideoItem from './VideoItem/VideoItem';
 

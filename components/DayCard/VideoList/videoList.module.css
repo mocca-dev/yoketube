@@ -1,5 +1,7 @@
 .container {
+  position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: calc(100% - 66px);
+  height: calc(100% - 75px);
+  border-radius: 10px;
 }

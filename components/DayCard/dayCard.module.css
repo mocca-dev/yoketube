@@ -11,6 +11,7 @@
 }
 
 .main {
+  position: relative;
   height: calc(100% - 100px);
   padding: var(--side-padding);
   background-color: var(--dark-primary);

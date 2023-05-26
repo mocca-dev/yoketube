@@ -1,0 +1,23 @@
+.container {
+  position: absolute;
+  z-index: 1;
+  top: 65px;
+  right: 18px;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgb(195, 89, 221);
+  background: linear-gradient(
+    90deg,
+    rgba(195, 89, 221, 1) 0%,
+    rgba(134, 82, 220, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container:active {
+  opacity: 0.85;
+}
