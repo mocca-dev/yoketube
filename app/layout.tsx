@@ -1,5 +1,6 @@
-import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import { Roboto_Condensed } from 'next/font/google';
+import './globals.css';
 import styles from './page.module.css';
 import Header from '@/components/Header/Header';
 
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <link rel="manifest" href="/manifest.json" />
       <link rel="apple-touch-icon" href="/ios/icon-512x512.png"></link>
-      <meta name="theme-color" content="#101014" />
+      <meta name="theme-color" content="#1e1e1e" />
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${roboto_Condensed.className} ${styles.body}`}>
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );
