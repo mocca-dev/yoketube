@@ -18,7 +18,7 @@ body {
 
 :root {
   font-size: 16px;
-  --border-radius: 12px;
+  --border-radius: 20px;
   --bg-dark: #101014;
   --bg-light: #1b1b1b;
   --dark-primary: #2b2b2d;

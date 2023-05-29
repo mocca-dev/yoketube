@@ -6,7 +6,7 @@
   width: calc(100% - 10px);
   background-color: var(--bg-light);
   border-radius: var(--border-radius);
-  bottom: 20px;
+  bottom: 30px;
 }
 
 .buttonsBar {
@@ -14,11 +14,12 @@
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  bottom: 0px;
+  bottom: -3px;
   width: 100%;
   padding: 20px 30px;
 }
 
 .buttonsBar svg {
   cursor: pointer;
+  width: 20px;
 }
