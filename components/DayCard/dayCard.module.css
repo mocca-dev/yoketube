@@ -1,3 +1,8 @@
+.container {
+  min-width: 100%;
+  scroll-snap-align: center;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

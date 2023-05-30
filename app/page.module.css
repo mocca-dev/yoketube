@@ -8,6 +8,19 @@
 
 .main {
   position: relative;
-  padding: 20px 0px;
+  padding-top: 20px;
   height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: calc(100vh - 100px);
 }

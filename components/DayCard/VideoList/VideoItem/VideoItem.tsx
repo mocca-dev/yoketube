@@ -1,28 +1,27 @@
 import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import styles from './videoItem.module.css';
+import Video from '@/types/Types';
 
-interface VideoItemProps extends HTMLAttributes<HTMLDivElement> {}
+interface VideoItemProps extends HTMLAttributes<HTMLDivElement> {
+  data: Video;
+}
 
-export const VideoItem = ({}: VideoItemProps) => {
-  return (
-    <div className={styles.container}>
-      <Image
-        src="/thumbnail1.png"
-        className={styles.thumbnail}
-        height={70}
-        width={120}
-        alt=""
-      />
-      <span className={styles.descriptionContainer}>
-        <div className={styles.title}>
-          5 MIN WAKE UP CALL ROUTINE TO STAY SHREDDED | Rowan Row
-        </div>
-        <div className={styles.channelName}>Rowan Row</div>
-        <div className={styles.duration}>7:36</div>
-      </span>
-    </div>
-  );
-};
+export const VideoItem = ({ data }: VideoItemProps) => (
+  <div className={styles.container}>
+    <Image
+      src={data.thumbnailUrl}
+      className={styles.thumbnail}
+      height={70}
+      width={120}
+      alt=""
+    />
+    <span className={styles.descriptionContainer}>
+      <div className={styles.title}>{data.name}</div>
+      <div className={styles.channelName}>{data.author}</div>
+      <div className={styles.duration}>{data.duration}</div>
+    </span>
+  </div>
+);
 
 export default VideoItem;

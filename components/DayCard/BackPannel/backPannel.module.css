@@ -2,11 +2,11 @@
   position: absolute;
   z-index: 1;
   right: 5px;
-  height: 100px;
+  height: calc(100% - 100px);
   width: calc(100% - 10px);
   background-color: var(--bg-light);
   border-radius: var(--border-radius);
-  bottom: 30px;
+  bottom: 0px;
 }
 
 .buttonsBar {
