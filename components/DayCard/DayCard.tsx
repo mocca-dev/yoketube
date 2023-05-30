@@ -5,6 +5,7 @@ import VideoList from './VideoList/VideoList';
 import PlayButton from './PlayButton/PlayButton';
 import BackPannel from './BackPannel/BackPannel';
 import Video from '@/types/Types';
+import CheckBox from '../CheckBox/CheckBox';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -30,7 +31,8 @@ export const DayCard = ({ name, date, list }: DayCardProps) => {
         ) : (
           <>
             <div className={styles.mainTitle}>Select a list</div>
-            <button className={styles.checkboxCointainer}>Arms and Legs</button>
+            <CheckBox label="Arms and Legs" value="1" />
+            <CheckBox label="Back and abs" value="2" />
             <button className={styles.btnCointainer}>Set list</button>
           </>
         )}
