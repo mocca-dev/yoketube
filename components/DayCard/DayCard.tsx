@@ -29,7 +29,9 @@ export const DayCard = ({ name, date, list }: DayCardProps) => {
           </>
         ) : (
           <>
-            <span>Select a list</span>
+            <div className={styles.mainTitle}>Select a list</div>
+            <button className={styles.checkboxCointainer}>Arms and Legs</button>
+            <button className={styles.btnCointainer}>Set list</button>
           </>
         )}
       </main>

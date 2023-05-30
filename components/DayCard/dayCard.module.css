@@ -24,3 +24,32 @@
   background-color: var(--dark-primary);
   border-radius: var(--border-radius);
 }
+
+.mainTitle {
+  margin-bottom: 20px;
+}
+
+.btnCointainer {
+  display: block;
+  position: absolute;
+  bottom: var(--side-padding);
+  font-size: 1rem;
+  border: none;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  color: var(--fg-primary);
+  background: var(--primary-linear-gradient);
+  width: calc(100% - 2 * var(--side-padding));
+}
+
+.checkboxCointainer {
+  display: block;
+  font-size: 1rem;
+  border: none;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  color: var(--fg-primary);
+  background: var(--bg-light);
+  width: calc(100%);
+  margin: auto;
+}
