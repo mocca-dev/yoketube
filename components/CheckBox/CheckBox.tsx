@@ -10,7 +10,7 @@ export const CheckBox = ({ label }: CheckBoxProps) => {
   return (
     <label className={styles.container}>
       {label}
-      <input type="radio" checked={true} name="radio" />
+      <input type="radio" name="radio" />
       <span className={styles.checkmark}></span>
     </label>
   );
