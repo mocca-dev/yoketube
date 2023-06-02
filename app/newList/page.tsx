@@ -4,7 +4,7 @@ import SecondaryBtn from '@/components/SecondaryBtn/SecondaryBtn';
 import TextField from '@/components/TextField/TextField';
 import TextFieldWithDelete from '@/components/TextFieldWithDelete/TextFieldWithDelete';
 
-export const page = () => {
+export default function NewList() {
   return (
     <>
       <Label name="name" text="Name" />
@@ -25,6 +25,4 @@ export const page = () => {
       <PrimaryBtn label="Save" />
     </>
   );
-};
-
-export default page;
+}

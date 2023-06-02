@@ -30,7 +30,7 @@ export const TextFieldWithDelete = ({
           name={name}
           placeholder={placeholder}
           value={value}
-          onChange={() => null}
+          onChange={onChange}
         />
         <SmallBtn>
           <DeleteIcon />
