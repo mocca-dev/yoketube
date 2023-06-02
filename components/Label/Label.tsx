@@ -1,5 +1,4 @@
 import { HTMLAttributes } from 'react';
-import styles from './label.module.css';
 
 interface LabelProps extends HTMLAttributes<HTMLDivElement> {
   text: string;
@@ -7,9 +6,7 @@ interface LabelProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Label = ({ text, name }: LabelProps) => (
-  <label htmlFor={name} className={styles.label}>
-    {text}
-  </label>
+  <label htmlFor={name}>{text}</label>
 );
 
 export default Label;
