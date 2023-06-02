@@ -9,14 +9,18 @@ export const SelectList = () => {
   const [list] = useState([
     { title: 'Arms and Legs' },
     { title: 'Back and abs' },
+    { title: 'Back and abs' },
+    { title: 'Back and abs' },
   ]);
   return (
     <>
       <div className={styles.mainTitle}>Select a list</div>
-      {list &&
-        list.map((item) => (
-          <CheckBox key={item.title} label={item.title} value="1" />
-        ))}
+      <div className={styles.listContainer}>
+        {list &&
+          list.map((item) => (
+            <CheckBox key={item.title} label={item.title} value="1" />
+          ))}
+      </div>
       <Link href={'/newList'}>
         <SecondaryBtn toTheBottom={true} label="+ Add new list" />
       </Link>

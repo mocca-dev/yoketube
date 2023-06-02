@@ -1,3 +1,9 @@
 .mainTitle {
   margin-bottom: 20px;
 }
+
+.listContainer {
+  height: calc(100% - 240px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
