@@ -1,3 +1,5 @@
+'use client';
+
 import TextField from '@/components/TextField/TextField';
 import { HTMLAttributes } from 'react';
 import styles from './textfieldwithdelete.module.css';
@@ -28,7 +30,7 @@ export const TextFieldWithDelete = ({
           name={name}
           placeholder={placeholder}
           value={value}
-          onChange={onChange}
+          onChange={() => null}
         />
         <SmallBtn>
           <DeleteIcon />

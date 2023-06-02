@@ -1,5 +1,3 @@
-'use client';
-
 import Label from '@/components/Label/Label';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import SecondaryBtn from '@/components/SecondaryBtn/SecondaryBtn';
@@ -14,14 +12,14 @@ export const page = () => {
         name="name"
         value=""
         placeholder="Back and legs, Arms and Abs,..."
-        onChange={() => null}
+        onChange={null}
       />
       <TextFieldWithDelete
         label="List of videos"
         name="listOfVideos"
         value=""
         placeholder="https://www.youtube.com/playlist?list..."
-        onChange={() => null}
+        onChange={null}
       />
       <SecondaryBtn label="+ Add new link" />
       <PrimaryBtn label="Save" />

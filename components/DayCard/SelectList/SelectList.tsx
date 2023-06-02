@@ -9,8 +9,8 @@ export const SelectList = () => {
   const [list] = useState([
     { title: 'Arms and Legs' },
     { title: 'Back and abs' },
-    { title: 'Back and abs' },
-    { title: 'Back and abs' },
+    { title: 'Back and abs2' },
+    { title: 'Back and abs3' },
   ]);
   return (
     <>

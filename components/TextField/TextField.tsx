@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes } from 'react';
 import styles from './textField.module.css';
 import CrossIcon from '../CrossIcon/CrossIcon';
