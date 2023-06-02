@@ -1,10 +1,11 @@
 .header {
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100vw;
   padding: 10px var(--side-padding);
-  display: flex;
   justify-content: space-between;
 }
 
@@ -24,4 +25,10 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }

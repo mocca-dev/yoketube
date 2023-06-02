@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  margin-top: 10px;
+  background: var(--dark-primary);
+  border: 1px solid white;
+  border-radius: 13px;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1rem;
+}
+
+.toTheBottom {
+  display: block;
+  position: absolute;
+  bottom: 80px;
+  width: calc(100% - 2 * var(--side-padding));
+}

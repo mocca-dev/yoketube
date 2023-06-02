@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import styles from './backPannel.module.css';
 import ResetIcon from './ResetIcon';
 import EditIcon from './EditIcon';
-import ArrowIcon from './ArrowIcon';
+import RightArrowIcon from './RightArrowIcon';
 
 interface BackPannelProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -12,7 +12,7 @@ export const BackPannel = ({}: BackPannelProps) => {
       <div className={styles.buttonsBar}>
         <ResetIcon />
         <EditIcon />
-        <ArrowIcon />
+        <RightArrowIcon />
       </div>
     </div>
   );

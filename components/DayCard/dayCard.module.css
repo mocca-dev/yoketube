@@ -1,6 +1,7 @@
 .container {
   min-width: 100%;
   scroll-snap-align: center;
+  padding-top: 10px;
 }
 
 .header {
@@ -23,21 +24,4 @@
   padding-bottom: 20px;
   background-color: var(--dark-primary);
   border-radius: var(--border-radius);
-}
-
-.mainTitle {
-  margin-bottom: 20px;
-}
-
-.btnCointainer {
-  display: block;
-  position: absolute;
-  bottom: var(--side-padding);
-  font-size: 1rem;
-  border: none;
-  padding: 20px;
-  border-radius: var(--border-radius);
-  color: var(--fg-primary);
-  background: var(--primary-linear-gradient);
-  width: calc(100% - 2 * var(--side-padding));
 }
