@@ -1,12 +1,12 @@
 import { HTMLAttributes } from 'react';
+import styles from './label.module.css';
 
 interface LabelProps extends HTMLAttributes<HTMLDivElement> {
   text: string;
-  name: string;
 }
 
-export const Label = ({ text, name }: LabelProps) => (
-  <label htmlFor={name}>{text}</label>
+const Label = ({ text }: LabelProps) => (
+  <label className={styles.container}>{text}</label>
 );
 
 export default Label;

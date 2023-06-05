@@ -3,10 +3,14 @@ import styles from './primaryBtn.module.css';
 
 interface PrimaryBtnProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
+  action: any;
+  type?: string;
 }
 
-export const PrimaryBtn = ({ label }: PrimaryBtnProps) => (
-  <button className={styles.container}>{label}</button>
+const PrimaryBtn = ({ label, action, type }: PrimaryBtnProps) => (
+  <button typeof={type} className={styles.container} onClick={action}>
+    {label}
+  </button>
 );
 
 export default PrimaryBtn;

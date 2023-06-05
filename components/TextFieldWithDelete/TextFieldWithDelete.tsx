@@ -1,5 +1,3 @@
-'use client';
-
 import TextField from '@/components/TextField/TextField';
 import { HTMLAttributes } from 'react';
 import styles from './textfieldwithdelete.module.css';
@@ -8,31 +6,23 @@ import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import SmallBtn from '../SmallBtn/SmallBtn';
 
 interface TextFieldWithDeleteProps extends HTMLAttributes<HTMLDivElement> {
-  label: string;
-  value: string;
   name: string;
   placeholder: string;
-  onChange: any;
+  deleteAction: any;
+  disabledDelete: boolean;
 }
 
-export const TextFieldWithDelete = ({
-  label,
-  value,
+const TextFieldWithDelete = ({
   name,
   placeholder,
-  onChange,
+  deleteAction,
+  disabledDelete,
 }: TextFieldWithDeleteProps) => {
   return (
     <>
-      <Label name={name} text={label} />
       <div className={styles.container}>
-        <TextField
-          name={name}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-        <SmallBtn>
+        <TextField name={name} placeholder={placeholder} />
+        <SmallBtn name={name} action={deleteAction} disabled={disabledDelete}>
           <DeleteIcon />
         </SmallBtn>
       </div>

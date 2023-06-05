@@ -1,0 +1,9 @@
+.form {
+  height: calc(100% - 90px);
+}
+
+.listContainer {
+  height: calc(100% - 210px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

@@ -3,6 +3,9 @@
   padding: 0px 17px;
   border-radius: 13px;
   margin-top: 10px;
-  margin-bottom: 25px;
   background: var(--dark-primary);
+}
+
+.disabled {
+  opacity: 0.2;
 }
