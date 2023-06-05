@@ -5,7 +5,7 @@ import styles from './selectList.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
 
-export const SelectList = () => {
+const SelectList = () => {
   const [list] = useState([
     { title: 'Arms and Legs' },
     { title: 'Back and abs' },
@@ -22,9 +22,13 @@ export const SelectList = () => {
           ))}
       </div>
       <Link href={'/newList'}>
-        <SecondaryBtn toTheBottom={true} label="+ Add new list" />
+        <SecondaryBtn
+          toTheBottom={true}
+          label="+ Add new list"
+          action={undefined}
+        />
       </Link>
-      <PrimaryBtn label="Set list" />
+      <PrimaryBtn label="Set list" action={undefined} />
     </>
   );
 };

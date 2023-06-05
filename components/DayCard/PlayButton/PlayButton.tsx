@@ -4,7 +4,7 @@ import PlayIcon from './PlayIcon';
 
 interface PlayButtonProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const PlayButton = ({}: PlayButtonProps) => {
+const PlayButton = ({}: PlayButtonProps) => {
   return (
     <div className={styles.container}>
       <PlayIcon />

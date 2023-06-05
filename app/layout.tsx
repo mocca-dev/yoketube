@@ -9,7 +9,7 @@ const roboto_Condensed = Roboto_Condensed({
   subsets: ['latin'],
 });
 
-export const metadata = {
+const metadata = {
   title: 'YokeTube',
   description: 'Make your workout video routine list and track your progres',
 };

@@ -3,7 +3,7 @@ import styles from './statsHeder.module.css';
 
 interface StatsHeaderProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const StatsHeader = ({}: StatsHeaderProps) => {
+const StatsHeader = ({}: StatsHeaderProps) => {
   return (
     <div className={styles.container}>
       <span>

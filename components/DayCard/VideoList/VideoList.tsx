@@ -7,7 +7,7 @@ interface VideoListProps extends HTMLAttributes<HTMLDivElement> {
   list: Video[];
 }
 
-export const VideoList = ({ list }: VideoListProps) => {
+const VideoList = ({ list }: VideoListProps) => {
   return (
     <div className={styles.container}>
       {list && list.map((video) => <VideoItem key={video.name} data={video} />)}

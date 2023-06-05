@@ -6,7 +6,7 @@ interface CheckBoxProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
 }
 
-export const CheckBox = ({ label }: CheckBoxProps) => {
+const CheckBox = ({ label }: CheckBoxProps) => {
   return (
     <label className={styles.container}>
       {label}

@@ -13,7 +13,7 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   list?: Video[];
 }
 
-export const DayCard = ({ name, date, list }: DayCardProps) => {
+const DayCard = ({ name, date, list }: DayCardProps) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>

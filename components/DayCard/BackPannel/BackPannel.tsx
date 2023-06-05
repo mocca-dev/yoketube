@@ -6,7 +6,7 @@ import RightArrowIcon from './RightArrowIcon';
 
 interface BackPannelProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const BackPannel = ({}: BackPannelProps) => {
+const BackPannel = ({}: BackPannelProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.buttonsBar}>

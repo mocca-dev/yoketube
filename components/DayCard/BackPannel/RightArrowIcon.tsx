@@ -1,4 +1,4 @@
-export const RightArrowIcon = () => (
+const RightArrowIcon = () => (
   <svg width="26" height="27" viewBox="0 0 26 27" fill="none">
     <path
       d="M24 13.3181L12.6863 24.6318"

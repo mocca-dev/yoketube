@@ -1,4 +1,4 @@
-export const ResetIcon = () => {
+const ResetIcon = () => {
   return (
     <svg width="26" height="25" viewBox="0 0 26 25" fill="none">
       <path

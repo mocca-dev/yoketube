@@ -9,7 +9,7 @@ import LeftArrowIcon from '../LeftArrowIcon/LeftArrowIcon';
 
 interface HeaderProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const Header = ({}: HeaderProps) => {
+const Header = ({}: HeaderProps) => {
   const pathname = usePathname();
 
   return (
