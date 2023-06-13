@@ -19,7 +19,7 @@
 .main {
   z-index: 2;
   position: relative;
-  height: calc(100% - 100px);
+  height: calc(100% - 130px);
   padding: var(--side-padding);
   padding-bottom: 20px;
   background-color: var(--dark-primary);
