@@ -7,17 +7,7 @@
   width: 100vw;
   padding: 10px var(--side-padding);
   justify-content: space-between;
-}
-
-.welcome {
-  font-size: 20px;
-  color: var(--fg-secondary);
-  font-weight: 300;
-}
-
-.username {
-  font-size: 23px;
-  font-weight: 700;
+  height: 74px;
 }
 
 .profilePic {

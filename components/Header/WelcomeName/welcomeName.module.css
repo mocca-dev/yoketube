@@ -1,0 +1,10 @@
+.welcome {
+  font-size: 20px;
+  color: var(--fg-secondary);
+  font-weight: 300;
+}
+
+.username {
+  font-size: 23px;
+  font-weight: 700;
+}
