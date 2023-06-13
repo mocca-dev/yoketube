@@ -1,9 +1,18 @@
-'use client';
-
-import { useState } from 'react';
 import styles from './page.module.css';
 import DayCard from '@/components/DayCard/DayCard';
 import Video from '@/types/Types';
+
+async function getLists() {
+  const res = await fetch('http://localhost:3000/api/lists', {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch lists!');
+  }
+
+  return res.json();
+}
 
 type Day = {
   name: string;
@@ -11,8 +20,10 @@ type Day = {
   list?: Video[];
 };
 
-export default function Home() {
-  const [days] = useState<Day[]>([
+export default async function Home() {
+  const data = await getLists();
+
+  const days: Day[] = [
     { name: 'Monday', date: 'Go to today', list: [] },
     {
       name: 'Today workout',
@@ -32,7 +43,7 @@ export default function Home() {
     { name: 'Friday', date: 'Go to today', list: [] },
     { name: 'Saturday', date: 'Go to today', list: [] },
     { name: 'Sunday', date: 'Go to today', list: [] },
-  ]);
+  ];
 
   return (
     <main className={styles.main}>

@@ -1,12 +1,18 @@
 .container {
   display: block;
-  position: absolute;
-  bottom: var(--side-padding);
   font-size: 1rem;
   border: none;
   padding: 16px;
   border-radius: 13px;
   color: var(--fg-primary);
   background: var(--primary-linear-gradient);
+  width: 100%;
+  margin-top: 40px;
+}
+
+.toTheBottom {
+  margin-top: 0;
+  position: absolute;
+  bottom: var(--side-padding);
   width: calc(100% - 2 * var(--side-padding));
 }

@@ -3,6 +3,7 @@ import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
 import styles from './page.module.css';
 import Header from '@/components/Header/Header';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 const roboto_Condensed = Roboto_Condensed({
   weight: ['300', '400', '700'],
@@ -30,9 +31,11 @@ export default function RootLayout({
       />
       <link rel="icon" href="/favicon.ico" />
       <body className={`${roboto_Condensed.className} ${styles.body}`}>
-        <Header />
-        {children}
-        <Analytics />
+        <AuthProvider>
+          <Header />
+          {children}
+          <Analytics />
+        </AuthProvider>
       </body>
     </html>
   );

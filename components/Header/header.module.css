@@ -32,3 +32,8 @@
   align-items: center;
   gap: 15px;
 }
+
+.noBackground {
+  background: none;
+  border: none;
+}

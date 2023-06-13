@@ -1,11 +1,16 @@
+'use client';
+
 import CheckBox from '@/components/CheckBox/CheckBox';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import SecondaryBtn from '@/components/SecondaryBtn/SecondaryBtn';
 import styles from './selectList.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 const SelectList = () => {
+  const session = useSession();
+  console.log(session);
   const [list] = useState([
     { title: 'Arms and Legs' },
     { title: 'Back and abs' },
@@ -28,7 +33,7 @@ const SelectList = () => {
           action={undefined}
         />
       </Link>
-      <PrimaryBtn label="Set list" action={undefined} />
+      <PrimaryBtn label="Set list" action={undefined} toTheBottom={true} />
     </>
   );
 };

@@ -3,12 +3,17 @@ import styles from './primaryBtn.module.css';
 
 interface PrimaryBtnProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
-  action: any;
+  action?: any;
   type?: string;
+  toTheBottom?: boolean;
 }
 
-const PrimaryBtn = ({ label, action, type }: PrimaryBtnProps) => (
-  <button typeof={type} className={styles.container} onClick={action}>
+const PrimaryBtn = ({ label, action, type, toTheBottom }: PrimaryBtnProps) => (
+  <button
+    typeof={type}
+    className={`${styles.container} ${toTheBottom ? styles.toTheBottom : null}`}
+    onClick={action}
+  >
     {label}
   </button>
 );

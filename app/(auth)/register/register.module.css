@@ -1,0 +1,26 @@
+.container {
+  text-align: left;
+}
+
+.container input {
+  margin-bottom: 10px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.link {
+  display: block;
+  color: white;
+  margin-top: 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
