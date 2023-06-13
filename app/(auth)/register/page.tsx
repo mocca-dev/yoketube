@@ -17,18 +17,22 @@ const Register = () => {
     const password = e.target[2].value;
     const repassword = e.target[3].value;
 
-    // try {
-    //   const res = await fetch('/api/auth/register', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ name, email, password }),
-    //   });
+    if (name) {
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, password }),
+        });
 
-    //   res.status === 201 &&
-    //     router.push('/login?success=Account has been created');
-    // } catch (error) {}
+        res.status === 201 &&
+          router.push('/login?success=Account has been created');
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
