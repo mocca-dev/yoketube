@@ -1,7 +1,6 @@
 'use client';
 import TextField from '@/components/TextField/TextField';
 import styles from './register.module.css';
-import Label from '@/components/Label/Label';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
