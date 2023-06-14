@@ -2,6 +2,7 @@
   min-width: 100%;
   scroll-snap-align: center;
   padding-top: 10px;
+  height: calc(100% - 60px);
 }
 
 .header {
@@ -19,7 +20,7 @@
 .main {
   z-index: 2;
   position: relative;
-  height: calc(100% - 130px);
+  height: calc(100% - 40px);
   padding: var(--side-padding);
   padding-bottom: 20px;
   background-color: var(--dark-primary);

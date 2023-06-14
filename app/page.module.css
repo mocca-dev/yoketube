@@ -22,5 +22,5 @@
   white-space: nowrap;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  height: calc(100vh - 120px);
+  height: 100%;
 }
