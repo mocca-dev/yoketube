@@ -1,6 +1,5 @@
 'use client';
 
-// import { HTMLAttributes } from 'react';
 import { useState } from 'react';
 import Label from '../Label/Label';
 import TextField from '../TextField/TextField';
@@ -12,10 +11,6 @@ import { setListByUser } from '@/app/utils/list';
 import { useSession } from 'next-auth/react';
 import { List } from '@/types/Types';
 import { useRouter } from 'next/navigation';
-
-// interface CreateListFormProps extends HTMLAttributes<HTMLDivElement> {
-//   : ;
-// } {  }: CreateListFormProps
 
 const CreateListForm = () => {
   const [linkList, setLinkList] = useState(['0', '1']);

@@ -13,13 +13,11 @@ import { List } from '@/types/Types';
 const SelectList = () => {
   const [list, setList] = useState<List[]>([]);
   const session = useSession();
-  // console.log(session);
 
   useEffect(() => {
     const getLists = async () => {
       const data = await getListsByUser(session.data?.user?.name || null);
       setList(data);
-      console.log(data);
     };
     getLists();
     // eslint-disable-next-line react-hooks/exhaustive-deps

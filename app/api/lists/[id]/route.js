@@ -4,11 +4,6 @@ import connect from '../../../utils/db';
 
 export const GET = async (request) => {
   const req = await request;
-  console.log(
-    'AAAAAAAAAA',
-    req.url,
-    req.url.slice(req.url.lastIndexOf('/') + 1)
-  );
 
   try {
     await connect();
