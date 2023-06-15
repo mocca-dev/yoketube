@@ -4,7 +4,7 @@ import StatsHeader from './StatsHeader/StatsHeader';
 import VideoList from './VideoList/VideoList';
 import PlayButton from './PlayButton/PlayButton';
 import BackPannel from './BackPannel/BackPannel';
-import Video from '@/types/Types';
+import { Video } from '@/types/Types';
 import SelectList from './SelectList/SelectList';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {

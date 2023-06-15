@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import styles from './videoItem.module.css';
-import Video from '@/types/Types';
+import { Video } from '@/types/Types';
 
 interface VideoItemProps extends HTMLAttributes<HTMLDivElement> {
   data: Video;

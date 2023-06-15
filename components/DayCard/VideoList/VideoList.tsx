@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import styles from './videoList.module.css';
 import VideoItem from './VideoItem/VideoItem';
-import Video from '@/types/Types';
+import { Video } from '@/types/Types';
 
 interface VideoListProps extends HTMLAttributes<HTMLDivElement> {
   list: Video[];

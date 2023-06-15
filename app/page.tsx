@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import DayCard from '@/components/DayCard/DayCard';
-import Video from '@/types/Types';
+import { Video } from '@/types/Types';
 
 type Day = {
   name: string;
