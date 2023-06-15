@@ -4,26 +4,40 @@ import CheckBox from '@/components/CheckBox/CheckBox';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import SecondaryBtn from '@/components/SecondaryBtn/SecondaryBtn';
 import styles from './selectList.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import getListsByUser from '@/app/utils/getListesByUser';
+
+type List = {
+  name: string;
+  list: string;
+  username: string;
+  _id: string;
+};
 
 const SelectList = () => {
+  const [list, setList] = useState<List[]>([]);
   const session = useSession();
   // console.log(session);
-  const [list] = useState([
-    { title: 'Arms and Legs' },
-    { title: 'Back and abs' },
-    { title: 'Back and abs2' },
-    { title: 'Back and abs3' },
-  ]);
+
+  useEffect(() => {
+    const getLists = async () => {
+      const data = await getListsByUser(session.data?.user?.name || null);
+      setList(data);
+      console.log(data);
+    };
+    getLists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session.status]);
+
   return (
     <>
       <div className={styles.mainTitle}>Select a list</div>
       <div className={styles.listContainer}>
         {list &&
           list.map((item) => (
-            <CheckBox key={item.title} label={item.title} value="1" />
+            <CheckBox key={item._id} label={item.name} value="1" />
           ))}
       </div>
       <Link href={'/newList'}>
