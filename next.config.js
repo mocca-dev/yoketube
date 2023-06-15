@@ -4,6 +4,9 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 });
 
 module.exports = withPWA({
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: process.env.NODE_ENV !== 'development',
   images: {
     remotePatterns: [
