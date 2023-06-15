@@ -29,7 +29,7 @@ const Register = () => {
         res.status === 201 &&
           router.push('/login?success=Account has been created');
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   };

@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/react';
 
 const SelectList = () => {
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   const [list] = useState([
     { title: 'Arms and Legs' },
     { title: 'Back and abs' },
