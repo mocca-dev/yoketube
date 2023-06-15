@@ -1,22 +1,22 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import TwitterProvider from 'next-auth/providers/twitter';
+// import TwitterProvider from 'next-auth/providers/twitter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import connect from '@/app/utils/db';
 import User from '@/app/models/User';
 import bcrypt from 'bcryptjs';
 
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
-    TwitterProvider({
-      clientId: process.env.TWITTER_ID,
-      clientSecret: process.env.TWITTER_SECRET,
-      version: '2.0',
-    }),
+    // TwitterProvider({
+    //   clientId: process.env.TWITTER_ID,
+    //   clientSecret: process.env.TWITTER_SECRET,
+    //   version: '2.0',
+    // }),
     CredentialsProvider({
       id: 'credentials',
       name: 'Credentials',
@@ -45,16 +45,20 @@ const handler = NextAuth({
   ],
   pages: {
     error: '/login',
+    signIn: '/login',
   },
   callbacks: {
     async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
+      // console.log('NADA', baseUrl + url);
+      // // Allows relative callback URLs
       // if (url.startsWith('/')) return `${baseUrl}${url}`;
       // // Allows callback URLs on the same origin
       // else if (new URL(url).origin === baseUrl) return url;
       return baseUrl;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
