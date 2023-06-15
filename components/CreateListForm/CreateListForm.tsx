@@ -8,6 +8,10 @@ import TextFieldWithDelete from '../TextFieldWithDelete/TextFieldWithDelete';
 import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
 import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
 import styles from './createListForm.module.css';
+import { setListByUser } from '@/app/utils/list';
+import { useSession } from 'next-auth/react';
+import { List } from '@/types/Types';
+import { useRouter } from 'next/navigation';
 
 // interface CreateListFormProps extends HTMLAttributes<HTMLDivElement> {
 //   : ;
@@ -15,14 +19,34 @@ import styles from './createListForm.module.css';
 
 const CreateListForm = () => {
   const [linkList, setLinkList] = useState(['0', '1']);
+  const session = useSession();
+  const router = useRouter();
 
   const addLink = (e: any) => {
     e.preventDefault();
     setLinkList([...linkList, linkList.length.toString()]);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    let videoList: string[] = [];
+
+    for (let index = 1; index < e.target.length; index++) {
+      const input = e.target[index];
+      if (input.tagName === 'INPUT') {
+        videoList.push(input.value);
+      }
+    }
+
+    const list: List = {
+      title: e.target[0].value,
+      email: session.data?.user?.email,
+      list: videoList,
+    };
+    const data = await setListByUser(session.data?.user?.name || '', list);
+    if (data) {
+      router.push('/');
+    }
   };
 
   const handleDelete = (e: any) => {
@@ -43,7 +67,7 @@ const CreateListForm = () => {
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <Label text="Name" />
       <TextField name="name" placeholder="Back and legs, Arms and Abs,..." />
 
@@ -60,11 +84,7 @@ const CreateListForm = () => {
         ))}
       </div>
       <SecondaryBtn label="+ Add new link" action={(e: any) => addLink(e)} />
-      <PrimaryBtn
-        type="submit"
-        label="Save"
-        action={(e: any) => handleSubmit(e)}
-      />
+      <PrimaryBtn type="submit" label="Save" />
     </form>
   );
 };

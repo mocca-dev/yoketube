@@ -7,14 +7,8 @@ import styles from './selectList.module.css';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import getListsByUser from '@/app/utils/getListesByUser';
-
-type List = {
-  name: string;
-  list: string;
-  username: string;
-  _id: string;
-};
+import { getListsByUser } from '@/app/utils/list';
+import { List } from '@/types/Types';
 
 const SelectList = () => {
   const [list, setList] = useState<List[]>([]);
@@ -37,7 +31,7 @@ const SelectList = () => {
       <div className={styles.listContainer}>
         {list &&
           list.map((item) => (
-            <CheckBox key={item._id} label={item.name} value="1" />
+            <CheckBox key={item._id} label={item.title} value="1" />
           ))}
       </div>
       <Link href={'/newList'}>
@@ -47,7 +41,7 @@ const SelectList = () => {
           action={undefined}
         />
       </Link>
-      <PrimaryBtn label="Set list" action={undefined} toTheBottom={true} />
+      <PrimaryBtn label="Set list" type="submit" toTheBottom={true} />
     </>
   );
 };

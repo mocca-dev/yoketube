@@ -4,15 +4,15 @@ const { Schema } = mongoose;
 
 const listSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
     list: {
-      type: String,
+      type: [String],
       required: true,
     },
-    username: {
+    email: {
       type: String,
       required: true,
     },
