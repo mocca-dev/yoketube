@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
 import styles from './page.module.css';
@@ -34,7 +33,6 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           {children}
-          <Analytics />
         </AuthProvider>
       </body>
     </html>
