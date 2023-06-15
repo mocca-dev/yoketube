@@ -2,18 +2,6 @@ import styles from './page.module.css';
 import DayCard from '@/components/DayCard/DayCard';
 import Video from '@/types/Types';
 
-// async function getLists() {
-//   const res = await fetch('http://localhost:3000/api/lists', {
-//     cache: 'no-store',
-//   });
-
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch lists!');
-//   }
-
-//   return res.json();
-// }
-
 type Day = {
   name: string;
   date: string;
@@ -21,8 +9,6 @@ type Day = {
 };
 
 export default async function Home() {
-  // const data = await getLists();
-
   const days: Day[] = [
     { name: 'Monday', date: 'Go to today', list: [] },
     {
