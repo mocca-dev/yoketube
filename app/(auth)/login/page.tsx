@@ -12,11 +12,15 @@ import { useState } from 'react';
 
 const Login = () => {
   const [showForm, setShowForm] = useState(false);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    signIn('credentials', { email, password });
+    signIn('credentials', {
+      email,
+      password,
+    });
   };
 
   return (
