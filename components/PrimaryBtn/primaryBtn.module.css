@@ -16,3 +16,7 @@
   bottom: var(--side-padding);
   width: calc(100% - 2 * var(--side-padding));
 }
+
+/* .disabled {
+  opacity: 0.5;
+} */

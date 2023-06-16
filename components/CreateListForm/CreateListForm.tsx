@@ -11,9 +11,11 @@ import { setListByUser } from '@/app/utils/list';
 import { useSession } from 'next-auth/react';
 import { List } from '@/types/Types';
 import { useRouter } from 'next/navigation';
+import LoaderWithText from '../LoaderWithText/LoaderWithText';
 
 const CreateListForm = () => {
-  const [linkList, setLinkList] = useState(['0', '1']);
+  const [linkList, setLinkList] = useState(['0']);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const session = useSession();
   const router = useRouter();
 
@@ -23,25 +25,45 @@ const CreateListForm = () => {
   };
 
   const handleSubmit = async (e: any) => {
+    setIsLoading(true);
     e.preventDefault();
     let videoList: string[] = [];
+
+    let emptyFields: any[] = [];
 
     for (let index = 1; index < e.target.length; index++) {
       const input = e.target[index];
       if (input.tagName === 'INPUT') {
         videoList.push(input.value);
+        if (input.value === '') {
+          emptyFields.push(input.classList.add(styles.error));
+        } else {
+          input.classList.remove(styles.error);
+        }
       }
     }
+    const hasSomeEmpty = emptyFields.length > 0;
 
-    const list: List = {
-      title: e.target[0].value,
-      email: session.data?.user?.email,
-      list: videoList,
-    };
-    const data = await setListByUser(session.data?.user?.name || '', list);
-    if (data) {
-      router.push('/');
+    const titleInput = e.target[0];
+
+    if (titleInput.value) {
+      titleInput.classList.remove(styles.error);
+    } else {
+      titleInput.classList.add(styles.error);
     }
+
+    if (titleInput.value && !hasSomeEmpty) {
+      const list: List = {
+        title: titleInput.value,
+        email: session.data?.user?.email,
+        list: videoList,
+      };
+      const data = await setListByUser(session.data?.user?.name || '', list);
+      if (data) {
+        router.push('/');
+      }
+    }
+    setIsLoading(false);
   };
 
   const handleDelete = (e: any) => {
@@ -62,25 +84,36 @@ const CreateListForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <Label text="Name" />
-      <TextField name="name" placeholder="Back and legs, Arms and Abs,..." />
+    <>
+      <form id="new-list" className={styles.form} onSubmit={handleSubmit}>
+        {isLoading ? (
+          <LoaderWithText text="Saving new list" />
+        ) : (
+          <>
+            <Label text="Name" />
+            <TextField
+              name="name"
+              placeholder="Back and legs, Arms and Abs,..."
+            />
 
-      <Label text="List of videos" />
-      <div className={styles.listContainer}>
-        {linkList.map((link) => (
-          <TextFieldWithDelete
-            key={link}
-            name={link.toString()}
-            placeholder="https://www.youtube.com/..."
-            deleteAction={(e: any) => handleDelete(e)}
-            disabledDelete={linkList.length === 1}
-          />
-        ))}
-      </div>
-      <SecondaryBtn label="+ Add new link" action={(e: any) => addLink(e)} />
-      <PrimaryBtn type="submit" label="Save" />
-    </form>
+            <Label text="List of videos" />
+            <div className={styles.listContainer}>
+              {linkList.map((link) => (
+                <TextFieldWithDelete
+                  key={link}
+                  name={link.toString()}
+                  placeholder="https://www.youtube.com/..."
+                  deleteAction={(e: any) => handleDelete(e)}
+                  disabledDelete={linkList.length === 1}
+                />
+              ))}
+            </div>
+          </>
+        )}
+        <SecondaryBtn label="+ Add new link" action={(e: any) => addLink(e)} />
+        <PrimaryBtn type="submit" label="Save" />
+      </form>
+    </>
   );
 };
 

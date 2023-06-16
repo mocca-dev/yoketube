@@ -2,6 +2,10 @@
   height: calc(100% - 90px);
 }
 
+.error {
+  border: 1px red solid;
+}
+
 .listContainer {
   height: calc(100% - 210px);
   overflow-x: hidden;

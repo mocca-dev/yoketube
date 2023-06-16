@@ -6,13 +6,21 @@ interface PrimaryBtnProps extends HTMLAttributes<HTMLDivElement> {
   action?: any;
   type?: string;
   toTheBottom?: boolean;
+  disabled?: boolean;
 }
 
-const PrimaryBtn = ({ label, action, type, toTheBottom }: PrimaryBtnProps) => (
+const PrimaryBtn = ({
+  label,
+  action,
+  type,
+  toTheBottom,
+  disabled,
+}: PrimaryBtnProps) => (
   <button
     typeof={type}
     className={`${styles.container} ${toTheBottom ? styles.toTheBottom : null}`}
     onClick={action}
+    disabled={disabled}
   >
     {label}
   </button>
