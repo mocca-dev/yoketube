@@ -18,9 +18,9 @@ body {
   color: var(--fg-primary);
 }
 
-html {
+/* html {
   height: calc(100vh - 50px);
-}
+} */
 
 :root {
   font-size: 16px;
