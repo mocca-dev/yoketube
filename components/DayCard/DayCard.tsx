@@ -11,29 +11,44 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
   date: string;
   lists: List[];
+  number: number;
   list?: string[];
 }
 
-const DayCard = ({ name, date, lists, list }: DayCardProps) => (
-  <div className={styles.container}>
-    <header className={styles.header}>
-      <span>{name}</span>
-      <span className={styles.date}>{date}</span>
-    </header>
+const DayCard = ({ name, date, lists, list, number }: DayCardProps) => {
+  const now = new Date();
+  const today = now.getDay();
+  const isToday = number === today;
+  if (isToday) {
+    let month = now.toLocaleString('default', {
+      month: 'long',
+    });
+    date = month + ' ' + now.getDate();
+  } else {
+    date = 'Go to today';
+  }
 
-    <main className={styles.main}>
-      <StatsHeader />
-      {list && list.length ? (
-        <>
-          <PlayButton />
-          <VideoList list={list} />
-        </>
-      ) : (
-        <SelectList lists={lists} />
-      )}
-    </main>
-    <BackPannel />
-  </div>
-);
+  return (
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <span>{isToday ? 'Today' : name}</span>
+        <span className={styles.date}>{date}</span>
+      </header>
+
+      <main className={styles.main}>
+        <StatsHeader />
+        {list && list.length ? (
+          <>
+            <PlayButton />
+            <VideoList list={list} />
+          </>
+        ) : (
+          <SelectList lists={lists} />
+        )}
+      </main>
+      <BackPannel />
+    </div>
+  );
+};
 
 export default DayCard;

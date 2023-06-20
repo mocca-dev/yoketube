@@ -19,6 +19,8 @@ export type List = {
 
 export type Day = {
   name: string;
+  number: number;
+  listId: string;
   date: string;
   list?: string[];
 };
