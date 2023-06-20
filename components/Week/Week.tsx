@@ -13,6 +13,7 @@ export const Week = () => {
   const [lists, setLists] = useState<List[]>([]);
 
   const session = useSession();
+  console.log(session);
 
   useEffect(() => {
     const getUserDataAndLists = async () => {
