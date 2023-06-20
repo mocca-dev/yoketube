@@ -1,6 +1,6 @@
 export async function getUserDataByEmail(id: string | null) {
   if (id) {
-    const res = await fetch(`http://localhost:3000/api/user/?email=${id}`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/user/?email=${id}`, {
       cache: 'no-store',
     });
     if (!res.ok) {

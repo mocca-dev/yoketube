@@ -2,7 +2,7 @@ import { List } from '@/types/Types';
 
 export async function getByUser(user: string | null) {
   if (user) {
-    const res = await fetch(`http://localhost:3000/api/lists/${user}`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/lists/${user}`, {
       cache: 'no-store',
     });
     if (!res.ok) {
