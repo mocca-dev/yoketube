@@ -4,28 +4,21 @@ import CheckBox from '@/components/CheckBox/CheckBox';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import SecondaryBtn from '@/components/SecondaryBtn/SecondaryBtn';
 import styles from './selectList.module.css';
-import { useEffect, useState } from 'react';
+import { HTMLAttributes, useState } from 'react';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
-import { getListsByUser } from '@/app/utils/list';
 import { List } from '@/types/Types';
 import LoaderWithText from '@/components/LoaderWithText/LoaderWithText';
 
-const SelectList = () => {
-  const [list, setList] = useState<List[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const session = useSession();
+interface SelectListProps extends HTMLAttributes<HTMLDivElement> {
+  lists: List[];
+}
 
-  useEffect(() => {
-    const getLists = async () => {
-      setIsLoading(true);
-      const data = await getListsByUser(session.data?.user?.name || null);
-      setList(data);
-      setIsLoading(false);
-    };
-    getLists();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session.status]);
+const SelectList = ({ lists }: SelectListProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSelectedItem = (id: string) => {
+    console.log(id);
+  };
 
   return (
     <>
@@ -34,9 +27,14 @@ const SelectList = () => {
         <LoaderWithText text="Saving new list" />
       ) : (
         <div className={styles.listContainer}>
-          {list &&
-            list.map((item) => (
-              <CheckBox key={item._id} label={item.title} value="1" />
+          {lists &&
+            lists.map((item: List) => (
+              <CheckBox
+                key={item._id}
+                label={item.title}
+                onClick={(id: string) => handleSelectedItem(id)}
+                value={item._id}
+              />
             ))}
         </div>
       )}

@@ -3,14 +3,15 @@ import styles from './checkbox.module.css';
 
 interface CheckBoxProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
-  value: string;
+  onClick: any;
+  value?: string;
 }
 
-const CheckBox = ({ label }: CheckBoxProps) => {
+const CheckBox = ({ label, value, onClick }: CheckBoxProps) => {
   return (
     <label className={styles.container}>
       {label}
-      <input type="radio" name="radio" />
+      <input type="radio" name="radio" onClick={() => onClick(value)} />
       <span className={styles.checkmark}></span>
     </label>
   );

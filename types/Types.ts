@@ -1,8 +1,13 @@
-export type Video = {
+type Author = {
   name: string;
-  author: string;
+  url: string;
+};
+
+export type Video = {
+  title: string;
+  author: Author;
   duration: string;
-  thumbnailUrl: string;
+  thumbnail: string;
 };
 
 export type List = {
@@ -10,4 +15,16 @@ export type List = {
   list: Video[] | string[];
   email?: string | null;
   _id?: string;
+};
+
+export type Day = {
+  name: string;
+  date: string;
+  list?: string[];
+};
+
+export type TWeek = {
+  name: string;
+  number: Number;
+  listId: string;
 };

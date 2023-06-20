@@ -10,7 +10,20 @@ export const POST = async (request) => {
 
   const hashedPassword = await bcrypt.hash(password, 5);
 
-  const newUser = new User({ name, email, password: hashedPassword });
+  const newUser = new User({
+    name,
+    email,
+    password: hashedPassword,
+    week: [
+      { name: 'Monday', number: 1, listId: '648c7cf1d36c8dee9eefae2b' },
+      { name: 'Tuesday', number: 2, listId: '' },
+      { name: 'Wednesday', number: 3, listId: '' },
+      { name: 'Thursday', number: 4, listId: '' },
+      { name: 'Friday', number: 5, listId: '' },
+      { name: 'Saturday', number: 6, listId: '648c7cf1d36c8dee9eefae2b' },
+      { name: 'Sunday', number: 7, listId: '648c7cf1d36c8dee9eefae2b' },
+    ],
+  });
 
   try {
     await newUser.save();

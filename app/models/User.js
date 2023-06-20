@@ -19,6 +19,10 @@ const userSchema = new Schema(
       unique: true,
       required: true,
     },
+    week: {
+      type: [],
+      unique: true,
+    },
   },
   { timestamps: true }
 );

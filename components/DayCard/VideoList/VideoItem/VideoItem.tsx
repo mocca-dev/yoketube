@@ -7,21 +7,25 @@ interface VideoItemProps extends HTMLAttributes<HTMLDivElement> {
   data: Video;
 }
 
-const VideoItem = ({ data }: VideoItemProps) => (
-  <div className={styles.container}>
-    <Image
-      src={data.thumbnailUrl}
-      className={styles.thumbnail}
-      height={70}
-      width={120}
-      alt=""
-    />
-    <span className={styles.descriptionContainer}>
-      <div className={styles.title}>{data.name}</div>
-      <div className={styles.channelName}>{data.author}</div>
-      <div className={styles.duration}>{data.duration}</div>
-    </span>
-  </div>
-);
+const VideoItem = ({ data }: VideoItemProps) => {
+  const { thumbnail, title, author } = data;
+
+  return (
+    <div className={styles.container}>
+      <Image
+        src={thumbnail}
+        className={styles.thumbnail}
+        height={70}
+        width={120}
+        alt=""
+      />
+      <span className={styles.descriptionContainer}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.channelName}>{author.name}</div>
+        {/* <div className={styles.duration}>{duration}</div> */}
+      </span>
+    </div>
+  );
+};
 
 export default VideoItem;
