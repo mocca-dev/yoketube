@@ -7,3 +7,8 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.noResults {
+  color: var(--fg-secondary);
+  text-align: center;
+}

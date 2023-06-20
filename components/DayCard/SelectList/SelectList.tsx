@@ -27,7 +27,7 @@ const SelectList = ({ lists }: SelectListProps) => {
         <LoaderWithText text="Saving new list" />
       ) : (
         <div className={styles.listContainer}>
-          {lists &&
+          {lists && lists.length ? (
             lists.map((item: List) => (
               <CheckBox
                 key={item._id}
@@ -35,7 +35,10 @@ const SelectList = ({ lists }: SelectListProps) => {
                 onClick={(id: string) => handleSelectedItem(id)}
                 value={item._id}
               />
-            ))}
+            ))
+          ) : (
+            <p className={styles.noResults}>There are no lists to show</p>
+          )}
         </div>
       )}
       <Link href={'/newList'}>
