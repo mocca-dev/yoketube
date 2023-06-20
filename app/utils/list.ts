@@ -2,14 +2,11 @@ import { List } from '@/types/Types';
 
 export async function getListsByEmail(email: string | null) {
   if (email) {
-    const res = await fetch(
-      `${process.env.BASE_URL}/api/lists/?email=${email}`,
-      {
-        cache: 'no-store',
-      }
-    );
+    const res = await fetch(`/api/lists/?email=${email}`, {
+      cache: 'no-store',
+    });
     if (!res.ok) {
-      throw new Error('Failed to fetch lists!');
+      throw new Error('Failed to fetch lists by Email!');
     }
 
     return res.json();
@@ -20,11 +17,11 @@ export async function getListsByEmail(email: string | null) {
 
 export async function getListByID(id: string | null) {
   if (id) {
-    const res = await fetch(`${process.env.BASE_URL}/api/lists/?id=${id}`, {
+    const res = await fetch(`/api/lists/?id=${id}`, {
       cache: 'no-store',
     });
     if (!res.ok) {
-      throw new Error('Failed to fetch lists!');
+      throw new Error('Failed to fetch lists by ID!');
     }
 
     return res.json();
@@ -35,7 +32,7 @@ export async function getListByID(id: string | null) {
 
 export async function setListByUser(user: string, list: List) {
   if (user) {
-    const res = await fetch(`${process.env.BASE_URL}/api/lists`, {
+    const res = await fetch(`/api/lists`, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
@@ -49,7 +46,7 @@ export async function setListByUser(user: string, list: List) {
     });
 
     if (!res.ok) {
-      throw new Error('Failed to fetch lists!');
+      throw new Error('Failed to set list by User!');
     }
     return res.json();
   } else {

@@ -1,10 +1,10 @@
 export async function getUserDataByEmail(id: string | null) {
   if (id) {
-    const res = await fetch(`${process.env.BASE_URL}/api/user/?email=${id}`, {
+    const res = await fetch(`/api/user/?email=${id}`, {
       cache: 'no-store',
     });
     if (!res.ok) {
-      throw new Error('Failed to fetch lists!');
+      throw new Error('Failed to fetch user data!');
     }
 
     return res.json();
