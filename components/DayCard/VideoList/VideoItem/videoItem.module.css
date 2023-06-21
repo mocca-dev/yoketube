@@ -16,10 +16,11 @@
 
 .title {
   font-size: 0.9rem;
+  white-space: normal;
 }
 
 .channelName {
-  font-size: 0.7rem;
+  /* font-size: 0.7rem; */
   color: var(--fg-secondary);
 }
 
