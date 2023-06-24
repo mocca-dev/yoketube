@@ -6,19 +6,36 @@ import PlayButton from './PlayButton/PlayButton';
 import BackPannel from './BackPannel/BackPannel';
 import { List } from '@/types/Types';
 import SelectList from './SelectList/SelectList';
+import { getListByID } from '@/app/utils/list';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
   date: string;
   lists: List[];
   number: number;
+  userEmail: any;
+  updateDayInList: any;
   list?: string[];
 }
 
-const DayCard = ({ name, date, lists, list, number }: DayCardProps) => {
+const DayCard = ({
+  name,
+  date,
+  lists,
+  list,
+  number,
+  updateDayInList,
+  userEmail,
+}: DayCardProps) => {
   const now = new Date();
   const today = now.getDay();
   const isToday = number === today;
+
+  const updateDay = async (id: string) => {
+    updateDayInList(id, number);
+    // console.log('LLLLLLL', id);
+  };
+
   if (isToday) {
     let month = now.toLocaleString('default', {
       month: 'long',
@@ -43,7 +60,12 @@ const DayCard = ({ name, date, lists, list, number }: DayCardProps) => {
             <VideoList list={list} />
           </>
         ) : (
-          <SelectList lists={lists} />
+          <SelectList
+            lists={lists}
+            dayNumber={number}
+            userEmail={userEmail}
+            updateDay={(id: string) => updateDay(id)}
+          />
         )}
       </main>
       <BackPannel />

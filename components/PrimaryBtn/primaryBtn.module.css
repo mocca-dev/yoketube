@@ -17,6 +17,7 @@
   width: calc(100% - 2 * var(--side-padding));
 }
 
-/* .disabled {
+.disabled {
+  cursor: not-allowed;
   opacity: 0.5;
-} */
+}

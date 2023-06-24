@@ -23,8 +23,9 @@ export async function getListByID(id: string | null) {
     if (!res.ok) {
       throw new Error('Failed to fetch lists by ID!');
     }
+    const resp = await res.json();
 
-    return res.json();
+    return resp;
   } else {
     return [];
   }
@@ -52,4 +53,28 @@ export async function setListByUser(user: string, list: List) {
   } else {
     return [];
   }
+}
+
+export async function updateListInWeekByUserEmail(
+  userEmail: string,
+  listId: string,
+  dayNumber: number
+) {
+  const res = await fetch(`/api/week`, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify({ userEmail, listId, dayNumber }),
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to set week!');
+  }
+  return res.json();
 }

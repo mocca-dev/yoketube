@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { getUserDataByEmail } from '@/app/utils/user';
 import DayCard from '../DayCard/DayCard';
-import { Day, List, TWeek } from '@/types/Types';
+import { Day, List } from '@/types/Types';
 import { getListByID, getListsByEmail } from '@/app/utils/list';
 import LoaderWithText from '../LoaderWithText/LoaderWithText';
 
@@ -17,7 +17,6 @@ export const Week = () => {
 
   useEffect(() => {
     const getUserDataAndLists = async () => {
-      // setIsLoading(true);
       const data = await getUserDataByEmail(session.data?.user?.email || null);
 
       if (data) {
@@ -33,7 +32,6 @@ export const Week = () => {
         );
         setDays(week);
       }
-      // setIsLoading(false);
     };
     if (session.status === 'authenticated') {
       getUserDataAndLists();
@@ -61,6 +59,18 @@ export const Week = () => {
     if (session.status === 'authenticated') getLists();
   }, [session.data?.user?.email, session.status]);
 
+  const updateDayInList = (id: string, dayNumber: number) => {
+    const selectedList = lists.filter((list) => list._id === id)[0];
+
+    if (days) {
+      let day = days[dayNumber - 1];
+      day = { ...day, list: selectedList.list as string[] };
+      days[dayNumber - 1] = day;
+
+      setDays([...days]);
+    }
+  };
+
   return (
     <>
       {days ? (
@@ -72,6 +82,10 @@ export const Week = () => {
             name={day.name}
             date={day.date}
             number={day.number}
+            userEmail={session.data?.user?.email}
+            updateDayInList={(id: string, number: number) =>
+              updateDayInList(id, number)
+            }
           />
         ))
       ) : (

@@ -8,16 +8,39 @@ import { HTMLAttributes, useState } from 'react';
 import Link from 'next/link';
 import { List } from '@/types/Types';
 import LoaderWithText from '@/components/LoaderWithText/LoaderWithText';
+import { updateListInWeekByUserEmail } from '@/app/utils/list';
 
 interface SelectListProps extends HTMLAttributes<HTMLDivElement> {
   lists: List[];
+  dayNumber: number;
+  userEmail: string;
+  updateDay: any;
 }
 
-const SelectList = ({ lists }: SelectListProps) => {
+const SelectList = ({
+  lists,
+  dayNumber,
+  userEmail,
+  updateDay,
+}: SelectListProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<string>();
 
   const handleSelectedItem = (id: string) => {
-    console.log(id);
+    setSelectedItem(id);
+  };
+
+  const handleSetList = async () => {
+    setIsLoading(true);
+    if (selectedItem) {
+      const newDay = await updateListInWeekByUserEmail(
+        userEmail,
+        selectedItem,
+        dayNumber
+      );
+      updateDay(newDay.listId);
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -48,7 +71,13 @@ const SelectList = ({ lists }: SelectListProps) => {
           action={undefined}
         />
       </Link>
-      <PrimaryBtn label="Set list" type="submit" toTheBottom={true} />
+      <PrimaryBtn
+        label="Set list"
+        type="submit"
+        action={handleSetList}
+        toTheBottom={true}
+        disabled={!selectedItem}
+      />
     </>
   );
 };

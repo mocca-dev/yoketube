@@ -18,7 +18,9 @@ const PrimaryBtn = ({
 }: PrimaryBtnProps) => (
   <button
     typeof={type}
-    className={`${styles.container} ${toTheBottom ? styles.toTheBottom : null}`}
+    className={`${styles.container} ${
+      toTheBottom ? styles.toTheBottom : null
+    } ${disabled ? styles.disabled : null}`}
     onClick={action}
     disabled={disabled}
   >
