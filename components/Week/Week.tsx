@@ -43,7 +43,7 @@ export const Week = () => {
         { name: 'Thursday', number: 4, listId: '', date: '' },
         { name: 'Friday', number: 5, listId: '', date: '' },
         { name: 'Saturday', number: 6, listId: '', date: '' },
-        { name: 'Sunday', number: 7, listId: '', date: '' },
+        { name: 'Sunday', number: 0, listId: '', date: '' },
       ]);
     }
   }, [session.data?.user?.email, session.status]);
