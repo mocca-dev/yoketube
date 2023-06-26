@@ -26,3 +26,10 @@
   background-color: var(--dark-primary);
   border-radius: var(--border-radius);
 }
+
+.goToTodayBtn {
+  color: var(--fg-secondary);
+  font-weight: 400;
+  background: none;
+  border: none;
+}

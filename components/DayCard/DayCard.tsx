@@ -1,4 +1,5 @@
-import { HTMLAttributes } from 'react';
+'use client';
+import { HTMLAttributes, useEffect } from 'react';
 import styles from './dayCard.module.css';
 import StatsHeader from './StatsHeader/StatsHeader';
 import VideoList from './VideoList/VideoList';
@@ -6,7 +7,7 @@ import PlayButton from './PlayButton/PlayButton';
 import BackPannel from './BackPannel/BackPannel';
 import { List } from '@/types/Types';
 import SelectList from './SelectList/SelectList';
-import { getListByID } from '@/app/utils/list';
+import { goToToday } from '@/app/utils/week';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -27,29 +28,31 @@ const DayCard = ({
   updateDayInList,
   userEmail,
 }: DayCardProps) => {
-  const now = new Date();
-  const today = now.getDay();
-  const isToday = number === today;
-
   const updateDay = async (id: string) => {
     updateDayInList(id, number);
     // console.log('LLLLLLL', id);
   };
 
-  if (isToday) {
-    let month = now.toLocaleString('default', {
-      month: 'long',
-    });
-    date = month + ' ' + now.getDate();
-  } else {
-    date = 'Go to today';
-  }
+  useEffect(() => {
+    if (name === 'Today') {
+      goToToday();
+    }
+  }, [name]);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} `}
+      id={`${name === 'Today' ? 'current' : ''}`}
+    >
       <header className={styles.header}>
-        <span>{isToday ? 'Today' : name}</span>
-        <span className={styles.date}>{date}</span>
+        <span>{name}</span>
+        {name === 'Today' ? (
+          <span className={styles.date}>{date}</span>
+        ) : (
+          <button className={styles.goToTodayBtn} onClick={goToToday}>
+            {date}
+          </button>
+        )}
       </header>
 
       <main className={styles.main}>

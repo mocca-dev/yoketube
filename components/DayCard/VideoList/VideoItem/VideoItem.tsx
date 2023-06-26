@@ -16,7 +16,7 @@ const VideoItem = ({ data }: VideoItemProps) => {
         src={thumbnail}
         className={styles.thumbnail}
         height={70}
-        width={120}
+        width={91}
         alt=""
       />
       <span className={styles.descriptionContainer}>

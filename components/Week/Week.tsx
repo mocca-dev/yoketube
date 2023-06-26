@@ -7,22 +7,31 @@ import DayCard from '../DayCard/DayCard';
 import { Day, List } from '@/types/Types';
 import { getListByID, getListsByEmail } from '@/app/utils/list';
 import LoaderWithText from '../LoaderWithText/LoaderWithText';
+import { getToday } from '@/app/utils/week';
 
 export const Week = () => {
   const [days, setDays] = useState<Day[]>();
   const [lists, setLists] = useState<List[]>([]);
 
   const session = useSession();
-  console.log(session);
+  // console.log(session);
 
   useEffect(() => {
     const getUserDataAndLists = async () => {
       const data = await getUserDataByEmail(session.data?.user?.email || null);
 
+      const { today, date } = getToday();
+
       if (data) {
         let week: any = data.week;
         week = await Promise.all(
-          week.map(async (day: any) => {
+          week.map(async (day: Day) => {
+            if (today === day.number) {
+              day = { ...day, date: date, name: 'Today' };
+            } else {
+              day = { ...day, date: 'Go to today' };
+            }
+
             if (day.listId) {
               const { list } = await getListByID(day.listId || null);
               return { ...day, list };
