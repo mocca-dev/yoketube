@@ -1,5 +1,5 @@
 'use client';
-import { HTMLAttributes, useEffect } from 'react';
+import { HTMLAttributes, useContext, useEffect } from 'react';
 import styles from './dayCard.module.css';
 import StatsHeader from './StatsHeader/StatsHeader';
 import VideoList from './VideoList/VideoList';
@@ -8,6 +8,7 @@ import BackPannel from './BackPannel/BackPannel';
 import { List } from '@/types/Types';
 import SelectList from './SelectList/SelectList';
 import { goToToday } from '@/app/utils/week';
+import { ModalContext } from '@/context/modal.context';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -28,10 +29,7 @@ const DayCard = ({
   updateDayInList,
   userEmail,
 }: DayCardProps) => {
-  const updateDay = async (id: string) => {
-    updateDayInList(id, number);
-    // console.log('LLLLLLL', id);
-  };
+  const { dispatch } = useContext(ModalContext);
 
   useEffect(() => {
     if (name === 'Today') {
@@ -39,10 +37,23 @@ const DayCard = ({
     }
   }, [name]);
 
+  const updateDay = async (id: string) => {
+    updateDayInList(id, number);
+  };
+
+  const handlePlayClick = () => {
+    const onlyVideoIDList = list.map((video: string) =>
+      video.slice(video.indexOf('v=') + 2)
+    );
+
+    dispatch({ type: 'SET_LIST', payload: onlyVideoIDList });
+    dispatch({ type: 'SHOW' });
+  };
+
   return (
     <div
       className={`${styles.container} `}
-      id={`${name === 'Today' ? 'current' : ''}`}
+      id={`${name === 'Today' ? 'current' : number}`}
     >
       <header className={styles.header}>
         <span>{name}</span>
@@ -59,7 +70,7 @@ const DayCard = ({
         <StatsHeader />
         {list && list.length ? (
           <>
-            <PlayButton />
+            <PlayButton action={() => handlePlayClick()} />
             <VideoList list={list} />
           </>
         ) : (
@@ -70,8 +81,13 @@ const DayCard = ({
             updateDay={(id: string) => updateDay(id)}
           />
         )}
+        <div className={styles.hiddingPannel}></div>
+        <BackPannel
+          reset={() => console.log(number)}
+          edit={() => updateDay('')}
+          right={() => console.log('right')}
+        />
       </main>
-      <BackPannel />
     </div>
   );
 };

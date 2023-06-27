@@ -6,6 +6,7 @@
   width: 55px;
   height: 55px;
   cursor: pointer;
+  border: none;
   border-radius: 50%;
   background: var(--primary-linear-gradient);
   display: flex;

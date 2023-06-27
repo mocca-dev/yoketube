@@ -2,11 +2,11 @@
   position: absolute;
   z-index: 1;
   right: 5px;
-  height: calc(100% - 140px);
+  height: 80px;
   width: calc(100% - 10px);
   background-color: var(--bg-light);
-  border-radius: var(--border-radius);
-  bottom: 5px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  bottom: -65px;
 }
 
 .buttonsBar {
@@ -22,4 +22,9 @@
 .buttonsBar svg {
   cursor: pointer;
   width: 20px;
+}
+
+.buttonIcon {
+  background: none;
+  border: none;
 }

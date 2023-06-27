@@ -27,9 +27,21 @@
   border-radius: var(--border-radius);
 }
 
+.hiddingPannel {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+  width: 100%;
+  background-color: var(--dark-primary);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
 .goToTodayBtn {
   color: var(--fg-secondary);
   font-weight: 400;
+  font-size: 1rem;
   background: none;
   border: none;
 }

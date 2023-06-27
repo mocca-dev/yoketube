@@ -2,13 +2,15 @@ import { HTMLAttributes } from 'react';
 import styles from './playButton.module.css';
 import PlayIcon from './PlayIcon';
 
-interface PlayButtonProps extends HTMLAttributes<HTMLDivElement> {}
+interface PlayButtonProps extends HTMLAttributes<HTMLDivElement> {
+  action: any;
+}
 
-const PlayButton = ({}: PlayButtonProps) => {
+const PlayButton = ({ action }: PlayButtonProps) => {
   return (
-    <div className={styles.container}>
+    <button className={styles.container} onClick={action}>
       <PlayIcon />
-    </div>
+    </button>
   );
 };
 

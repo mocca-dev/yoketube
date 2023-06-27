@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { getUserDataByEmail } from '@/app/utils/user';
 import DayCard from '../DayCard/DayCard';
@@ -8,10 +8,12 @@ import { Day, List } from '@/types/Types';
 import { getListByID, getListsByEmail } from '@/app/utils/list';
 import LoaderWithText from '../LoaderWithText/LoaderWithText';
 import { getToday } from '@/app/utils/week';
+import { ModalContext } from '@/context/modal.context';
 
 export const Week = () => {
   const [days, setDays] = useState<Day[]>();
   const [lists, setLists] = useState<List[]>([]);
+  const { dispatch } = useContext(ModalContext);
 
   const session = useSession();
   // console.log(session);
@@ -69,7 +71,12 @@ export const Week = () => {
   }, [session.data?.user?.email, session.status]);
 
   const updateDayInList = (id: string, dayNumber: number) => {
-    const selectedList = lists.filter((list) => list._id === id)[0];
+    let selectedList: any = { _id: '', email: '', list: [], title: '' };
+    if (id !== '') {
+      selectedList = lists.filter((list) => list._id === id)[0];
+    } else {
+      selectedList.list = [];
+    }
 
     if (days) {
       let day = days[dayNumber - 1];
