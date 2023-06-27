@@ -80,7 +80,11 @@ export const Week = () => {
 
     if (days) {
       let day = days[dayNumber - 1];
-      day = { ...day, list: selectedList.list as string[] };
+      day = {
+        ...day,
+        list: selectedList.list as string[],
+        title: selectedList.title,
+      };
       days[dayNumber - 1] = day;
 
       setDays([...days]);
