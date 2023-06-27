@@ -1,14 +1,17 @@
 'use client';
-import { HTMLAttributes, useEffect, useState } from 'react';
+import { HTMLAttributes, useContext, useEffect, useState } from 'react';
 import styles from './videoList.module.css';
 import VideoItem from './VideoItem/VideoItem';
+import { ModalContext } from '@/context/modal.context';
 
 interface VideoListProps extends HTMLAttributes<HTMLDivElement> {
   list: string[];
+  dayNumber: number;
 }
 
-const VideoList = ({ list }: VideoListProps) => {
+const VideoList = ({ list, dayNumber }: VideoListProps) => {
   const [videoList, setVideoList] = useState<any>();
+  const { state } = useContext(ModalContext);
 
   useEffect(() => {
     const getVideoData = async () => {
@@ -34,8 +37,14 @@ const VideoList = ({ list }: VideoListProps) => {
   return (
     <div className={styles.container}>
       {videoList &&
-        videoList.map((video: any) => (
-          <VideoItem key={video.url} data={video} />
+        videoList.map((video: any, index: number) => (
+          <VideoItem
+            key={video.url}
+            data={video}
+            index={index}
+            playedList={state.playedList}
+            dayNumber={dayNumber}
+          />
         ))}
     </div>
   );

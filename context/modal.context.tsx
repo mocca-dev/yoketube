@@ -5,6 +5,8 @@ import React, { Dispatch, createContext, useReducer } from 'react';
 type StateType = {
   show: boolean;
   list: string[];
+  playedList: any[][];
+  currentDay: number;
 };
 
 type ActionType = {
@@ -15,6 +17,8 @@ type ActionType = {
 const initialState: StateType = {
   show: false,
   list: [],
+  playedList: [[], [], [], [], [], [], []],
+  currentDay: -1,
 };
 
 const reducer = (state: StateType, action: ActionType) => {
@@ -23,8 +27,23 @@ const reducer = (state: StateType, action: ActionType) => {
       return { ...state, show: true };
     case 'HIDE':
       return { ...state, show: false };
+    case 'SET_CURRENTDAY':
+      return { ...state, currentDay: action.payload };
     case 'SET_LIST':
-      return { ...state, list: action.payload };
+      return {
+        ...state,
+        list: action.payload,
+      };
+    case 'SET_PLAYED': {
+      state.playedList[state.currentDay][action.payload] = true;
+      return { ...state, playedList: state.playedList };
+    }
+    case 'RESET_PLAYED': {
+      const playedList = [...state.playedList];
+      playedList[action.payload] = [];
+
+      return { ...state, playedList };
+    }
     default:
       return state;
   }

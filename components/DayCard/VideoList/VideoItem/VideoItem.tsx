@@ -1,17 +1,26 @@
 import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import styles from './videoItem.module.css';
-import { Video } from '@/types/Types';
+import { EnhancedVideo, Video } from '@/types/Types';
 
 interface VideoItemProps extends HTMLAttributes<HTMLDivElement> {
-  data: Video;
+  data: EnhancedVideo;
+  index: number;
+  playedList: any[][];
+  dayNumber: number;
 }
 
-const VideoItem = ({ data }: VideoItemProps) => {
-  const { thumbnail, title, author } = data;
+const VideoItem = ({ data, index, playedList, dayNumber }: VideoItemProps) => {
+  const { thumbnail, title, author, played } = data;
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        playedList[dayNumber] && playedList[dayNumber][index]
+          ? styles.played
+          : ''
+      }`}
+    >
       <Image
         src={thumbnail}
         className={styles.thumbnail}

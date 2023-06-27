@@ -34,9 +34,7 @@ const DayCard = ({
   const { dispatch } = useContext(ModalContext);
 
   useEffect(() => {
-    if (name === 'Today') {
-      goToToday();
-    }
+    if (name === 'Today') goToToday();
   }, [name]);
 
   const updateDay = async (id: string) => {
@@ -48,6 +46,7 @@ const DayCard = ({
       video.slice(video.indexOf('v=') + 2)
     );
 
+    dispatch({ type: 'SET_CURRENTDAY', payload: number });
     dispatch({ type: 'SET_LIST', payload: onlyVideoIDList });
     dispatch({ type: 'SHOW' });
   };
@@ -73,7 +72,7 @@ const DayCard = ({
         {list && list.length ? (
           <>
             <PlayButton action={() => handlePlayClick()} />
-            <VideoList list={list} />
+            <VideoList list={list} dayNumber={number} />
           </>
         ) : (
           <SelectList
@@ -85,7 +84,7 @@ const DayCard = ({
         )}
         <div className={styles.hiddingPannel}></div>
         <BackPannel
-          reset={() => console.log(number)}
+          reset={() => dispatch({ type: 'RESET_PLAYED', payload: number })}
           edit={() => updateDay('')}
           right={() => console.log('right')}
         />

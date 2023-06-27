@@ -3,12 +3,17 @@ type Author = {
   url: string;
 };
 
-export type Video = {
+export interface Video {
   title: string;
   author: Author;
   duration: string;
   thumbnail: string;
-};
+}
+
+export interface EnhancedVideo extends Video {
+  url: string;
+  played: boolean;
+}
 
 export type List = {
   title: string;

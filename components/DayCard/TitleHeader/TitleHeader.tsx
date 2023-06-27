@@ -6,7 +6,7 @@ interface TitleHeaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const TitleHeader = ({ title }: TitleHeaderProps) => (
-  <h2 className={styles.container}>{title}</h2>
+  <h3 className={styles.container}>{title}</h3>
 );
 
 export default TitleHeader;
