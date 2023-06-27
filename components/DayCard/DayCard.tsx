@@ -42,9 +42,12 @@ const DayCard = ({
   };
 
   const handlePlayClick = () => {
-    const onlyVideoIDList = list?.map((video: string) =>
-      video.slice(video.indexOf('v=') + 2)
-    );
+    const onlyVideoIDList = list?.map((video: string) => {
+      if (video.startsWith('https://youtu.be/')) {
+        return video.replace('https://youtu.be/', '');
+      }
+      return video.slice(video.indexOf('v=') + 2);
+    });
 
     dispatch({ type: 'SET_CURRENTDAY', payload: number });
     dispatch({ type: 'SET_LIST', payload: onlyVideoIDList });

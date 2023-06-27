@@ -8,7 +8,7 @@ export const POST = async (request) => {
 
     await connect();
 
-    let user = await User.findOne({ _id: '648fc8acd57f0d2bb98b0382' });
+    let user = await User.findOne({ email: req.userEmail });
     let { week } = user;
 
     week = week.map((day) => {
