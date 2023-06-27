@@ -1,7 +1,6 @@
 'use client';
 import { HTMLAttributes, useContext, useEffect } from 'react';
 import styles from './dayCard.module.css';
-import StatsHeader from './StatsHeader/StatsHeader';
 import VideoList from './VideoList/VideoList';
 import PlayButton from './PlayButton/PlayButton';
 import BackPannel from './BackPannel/BackPannel';
@@ -9,6 +8,7 @@ import { List } from '@/types/Types';
 import SelectList from './SelectList/SelectList';
 import { goToToday } from '@/app/utils/week';
 import { ModalContext } from '@/context/modal.context';
+import TitleHeader from './TitleHeader/TitleHeader';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -17,6 +17,7 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   number: number;
   userEmail: any;
   updateDayInList: any;
+  title: string;
   list?: string[];
 }
 
@@ -28,6 +29,7 @@ const DayCard = ({
   number,
   updateDayInList,
   userEmail,
+  title,
 }: DayCardProps) => {
   const { dispatch } = useContext(ModalContext);
 
@@ -42,7 +44,7 @@ const DayCard = ({
   };
 
   const handlePlayClick = () => {
-    const onlyVideoIDList = list.map((video: string) =>
+    const onlyVideoIDList = list?.map((video: string) =>
       video.slice(video.indexOf('v=') + 2)
     );
 
@@ -67,7 +69,7 @@ const DayCard = ({
       </header>
 
       <main className={styles.main}>
-        <StatsHeader />
+        <TitleHeader title={title} />
         {list && list.length ? (
           <>
             <PlayButton action={() => handlePlayClick()} />

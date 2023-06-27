@@ -22,6 +22,7 @@ export type Day = {
   number: number;
   listId: string;
   date: string;
+  title: string;
   list?: string[];
 };
 

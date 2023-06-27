@@ -35,8 +35,8 @@ export const Week = () => {
             }
 
             if (day.listId) {
-              const { list } = await getListByID(day.listId || null);
-              return { ...day, list };
+              const { list, title } = await getListByID(day.listId || null);
+              return { ...day, list, title };
             }
             return day;
           })
@@ -48,13 +48,13 @@ export const Week = () => {
       getUserDataAndLists();
     } else {
       setDays([
-        { name: 'Monday', number: 1, listId: '', date: '' },
-        { name: 'Tuesday', number: 2, listId: '', date: '' },
-        { name: 'Wednesday', number: 3, listId: '', date: '' },
-        { name: 'Thursday', number: 4, listId: '', date: '' },
-        { name: 'Friday', number: 5, listId: '', date: '' },
-        { name: 'Saturday', number: 6, listId: '', date: '' },
-        { name: 'Sunday', number: 0, listId: '', date: '' },
+        { name: 'Monday', number: 1, listId: '', date: '', title: '' },
+        { name: 'Tuesday', number: 2, listId: '', date: '', title: '' },
+        { name: 'Wednesday', number: 3, listId: '', date: '', title: '' },
+        { name: 'Thursday', number: 4, listId: '', date: '', title: '' },
+        { name: 'Friday', number: 5, listId: '', date: '', title: '' },
+        { name: 'Saturday', number: 6, listId: '', date: '', title: '' },
+        { name: 'Sunday', number: 0, listId: '', date: '', title: '' },
       ]);
     }
   }, [session.data?.user?.email, session.status]);
@@ -99,6 +99,7 @@ export const Week = () => {
             date={day.date}
             number={day.number}
             userEmail={session.data?.user?.email}
+            title={day.title}
             updateDayInList={(id: string, number: number) =>
               updateDayInList(id, number)
             }

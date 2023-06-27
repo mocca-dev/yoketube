@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: 300;
+  padding-top: 10px;
+  margin-bottom: 40px;
+}
