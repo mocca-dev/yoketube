@@ -30,19 +30,19 @@ const Login = () => {
         <Logo />
       </div>
       <h3 className={styles.title}>Welcome to YokeTube</h3>
-      <GoogleButton />
-      {/* <TwitterButton />
-      <InstagramButton /> */}
-      <p className={styles.or}>or</p>
-      {!showForm ? (
+      {/* <GoogleButton /> 
+      <TwitterButton />
+      <InstagramButton /> 
+      <p className={styles.or}>or</p>*/}
+      {/* {!showForm ? (
         <PrimaryBtn label="Login with email" action={() => setShowForm(true)} />
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <TextField name="email" placeholder="Email" type="email" />
-          <TextField name="password" placeholder="Password" type="password" />
-          <PrimaryBtn type="submit" label="Login" />
-        </form>
-      )}
+      ) : ( */}
+      <form onSubmit={handleSubmit}>
+        <TextField name="email" placeholder="Email" type="email" />
+        <TextField name="password" placeholder="Password" type="password" />
+        <PrimaryBtn type="submit" label="Login" />
+      </form>
+      {/* )} */}
       <Link href="/register" className={styles.link}>
         Are you new here? Create new account
       </Link>
