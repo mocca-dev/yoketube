@@ -3,6 +3,7 @@ import { HTMLAttributes, useContext, useEffect, useState } from 'react';
 import styles from './videoList.module.css';
 import VideoItem from './VideoItem/VideoItem';
 import { ModalContext } from '@/context/modal.context';
+import LoaderWithText from '@/components/LoaderWithText/LoaderWithText';
 
 interface VideoListProps extends HTMLAttributes<HTMLDivElement> {
   list: string[];
@@ -36,7 +37,7 @@ const VideoList = ({ list, dayNumber }: VideoListProps) => {
 
   return (
     <div className={styles.container}>
-      {videoList &&
+      {videoList ? (
         videoList.map((video: any, index: number) => (
           <VideoItem
             key={video.url}
@@ -45,7 +46,10 @@ const VideoList = ({ list, dayNumber }: VideoListProps) => {
             playedList={state.playedList}
             dayNumber={dayNumber}
           />
-        ))}
+        ))
+      ) : (
+        <LoaderWithText text="Searching video data..." />
+      )}
     </div>
   );
 };

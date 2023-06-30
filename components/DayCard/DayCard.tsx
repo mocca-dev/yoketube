@@ -9,6 +9,7 @@ import SelectList from './SelectList/SelectList';
 import { goToToday } from '@/app/utils/week';
 import { ModalContext } from '@/context/modal.context';
 import TitleHeader from './TitleHeader/TitleHeader';
+import LoaderWithText from '../LoaderWithText/LoaderWithText';
 
 interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -18,6 +19,7 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   userEmail: any;
   updateDayInList: any;
   title: string;
+  isSearching: Boolean;
   list?: string[];
 }
 
@@ -30,6 +32,7 @@ const DayCard = ({
   updateDayInList,
   userEmail,
   title,
+  isSearching,
 }: DayCardProps) => {
   const { dispatch } = useContext(ModalContext);
 
@@ -77,13 +80,19 @@ const DayCard = ({
             <PlayButton action={() => handlePlayClick()} />
             <VideoList list={list} dayNumber={number} />
           </>
+        ) : isSearching ? (
+          <LoaderWithText text="Fetching week data" />
         ) : (
-          <SelectList
-            lists={lists}
-            dayNumber={number}
-            userEmail={userEmail}
-            updateDay={(id: string) => updateDay(id)}
-          />
+          <>
+            lists && lists.length ? (
+            <SelectList
+              lists={lists}
+              dayNumber={number}
+              userEmail={userEmail}
+              updateDay={(id: string) => updateDay(id)}
+            />
+            )
+          </>
         )}
         <div className={styles.hiddingPannel}></div>
         <BackPannel

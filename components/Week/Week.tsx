@@ -13,6 +13,7 @@ import { ModalContext } from '@/context/modal.context';
 export const Week = () => {
   const [days, setDays] = useState<Day[]>();
   const [lists, setLists] = useState<List[]>([]);
+  const [searching, setSearching] = useState<boolean>([]);
   const { dispatch } = useContext(ModalContext);
 
   const session = useSession();
@@ -20,6 +21,7 @@ export const Week = () => {
 
   useEffect(() => {
     const getUserDataAndLists = async () => {
+      setSearching(true);
       const data = await getUserDataByEmail(session.data?.user?.email || null);
 
       const { today, date } = getToday();
@@ -42,8 +44,10 @@ export const Week = () => {
           })
         );
         setDays(week);
+        setSearching(false);
       }
     };
+
     if (session.status === 'authenticated') {
       getUserDataAndLists();
     } else {
@@ -107,6 +111,7 @@ export const Week = () => {
             updateDayInList={(id: string, number: number) =>
               updateDayInList(id, number)
             }
+            isSearching={searching}
           />
         ))
       ) : (
