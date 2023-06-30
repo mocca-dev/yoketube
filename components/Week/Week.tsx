@@ -13,7 +13,7 @@ import { ModalContext } from '@/context/modal.context';
 export const Week = () => {
   const [days, setDays] = useState<Day[]>();
   const [lists, setLists] = useState<List[]>([]);
-  const [searching, setSearching] = useState<boolean>([]);
+  const [searching, setSearching] = useState<boolean>(false);
   const { dispatch } = useContext(ModalContext);
 
   const session = useSession();
