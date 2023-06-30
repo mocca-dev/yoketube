@@ -81,17 +81,19 @@ const DayCard = ({
             <VideoList list={list} dayNumber={number} />
           </>
         ) : isSearching ? (
-          <LoaderWithText text="Fetching week data" />
+          <LoaderWithText text="Fetching video data..." />
         ) : (
           <>
-            lists && lists.length ? (
-            <SelectList
-              lists={lists}
-              dayNumber={number}
-              userEmail={userEmail}
-              updateDay={(id: string) => updateDay(id)}
-            />
-            )
+            {lists && lists.length ? (
+              <SelectList
+                lists={lists}
+                dayNumber={number}
+                userEmail={userEmail}
+                updateDay={(id: string) => updateDay(id)}
+              />
+            ) : (
+              <LoaderWithText text="Fetching lists data..." />
+            )}
           </>
         )}
         <div className={styles.hiddingPannel}></div>

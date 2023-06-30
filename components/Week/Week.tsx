@@ -115,7 +115,7 @@ export const Week = () => {
           />
         ))
       ) : (
-        <LoaderWithText text="Fetching week data" />
+        <LoaderWithText text="Fetching week data..." />
       )}
     </>
   );
