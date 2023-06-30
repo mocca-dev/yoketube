@@ -48,7 +48,7 @@ const VideoList = ({ list, dayNumber }: VideoListProps) => {
           />
         ))
       ) : (
-        <LoaderWithText text="Searching video data..." />
+        <LoaderWithText text="Searching video data" />
       )}
     </div>
   );

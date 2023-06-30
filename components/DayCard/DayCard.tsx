@@ -81,7 +81,7 @@ const DayCard = ({
             <VideoList list={list} dayNumber={number} />
           </>
         ) : isSearching ? (
-          <LoaderWithText text="Fetching video data..." />
+          <LoaderWithText text="Fetching video data" />
         ) : (
           <>
             {lists && lists.length ? (
@@ -92,7 +92,7 @@ const DayCard = ({
                 updateDay={(id: string) => updateDay(id)}
               />
             ) : (
-              <LoaderWithText text="Fetching lists data..." />
+              <LoaderWithText text="Fetching lists data" />
             )}
           </>
         )}
