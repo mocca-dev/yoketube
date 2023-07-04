@@ -40,10 +40,6 @@ const DayCard = ({
     if (name === 'Today') goToToday();
   }, [name]);
 
-  const updateDay = async (id: string) => {
-    updateDayInList(id, number);
-  };
-
   const handlePlayClick = () => {
     const onlyVideoIDList = list?.map((video: string) => {
       if (video.startsWith('https://youtu.be/')) {
@@ -89,7 +85,7 @@ const DayCard = ({
                 lists={lists}
                 dayNumber={number}
                 userEmail={userEmail}
-                updateDay={(id: string) => updateDay(id)}
+                updateDay={(id: string) => updateDayInList(id, number)}
               />
             ) : (
               <LoaderWithText text="Fetching lists data" />
