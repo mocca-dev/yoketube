@@ -5,22 +5,14 @@ import { EnhancedVideo, Video } from '@/types/Types';
 
 interface VideoItemProps extends HTMLAttributes<HTMLDivElement> {
   data: EnhancedVideo;
-  index: number;
-  playedList: any[][];
-  dayNumber: number;
+  played: boolean;
 }
 
-const VideoItem = ({ data, index, playedList, dayNumber }: VideoItemProps) => {
-  const { thumbnail, title, author, played } = data;
+const VideoItem = ({ data, played }: VideoItemProps) => {
+  const { thumbnail, title, author } = data;
 
   return (
-    <div
-      className={`${styles.container} ${
-        playedList[dayNumber] && playedList[dayNumber][index]
-          ? styles.played
-          : ''
-      }`}
-    >
+    <div className={`${styles.container} ${played ? styles.played : ''}`}>
       <Image
         src={thumbnail}
         className={styles.thumbnail}

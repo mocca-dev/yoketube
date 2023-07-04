@@ -34,7 +34,7 @@ const DayCard = ({
   title,
   isSearching,
 }: DayCardProps) => {
-  const { dispatch } = useContext(ModalContext);
+  const { state, dispatch } = useContext(ModalContext);
 
   useEffect(() => {
     if (name === 'Today') goToToday();
@@ -92,7 +92,9 @@ const DayCard = ({
             )}
           </>
         )}
-        <div className={styles.hiddingPannel}></div>
+        <div className={styles.hiddingPannel}>
+          {state.playedList[number].length}/{list && list.length} played
+        </div>
         <BackPannel
           reset={() => dispatch({ type: 'RESET_PLAYED', payload: number })}
           edit={() => updateDay('')}

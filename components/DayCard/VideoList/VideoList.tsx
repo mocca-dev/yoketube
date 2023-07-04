@@ -22,9 +22,7 @@ const VideoList = ({ list, dayNumber }: VideoListProps) => {
           <VideoItem
             key={video.url}
             data={video}
-            index={index}
-            playedList={state.playedList}
-            dayNumber={dayNumber}
+            played={state.playedList[dayNumber][index]}
           />
         ))
       ) : (
