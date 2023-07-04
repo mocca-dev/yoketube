@@ -1,3 +1,5 @@
+import { List, Day } from '@/types/Types';
+
 export async function getByUser(user: string | null) {
   if (user) {
     const res = await fetch(`/api/lists/${user}`, {
@@ -30,4 +32,31 @@ export function getToday(): { today: number; date: string } {
   });
   const date = month + ' ' + now.getDate();
   return { today, date };
+}
+
+export function updateDayInList(
+  id: string,
+  dayNumber: number,
+  lists: List[],
+  days: Day[]
+): Day[] {
+  let selectedList: any = { _id: '', email: '', list: [], title: '' };
+  if (id !== '') {
+    selectedList = lists.filter((list) => list._id === id)[0];
+  } else {
+    selectedList.list = [];
+  }
+
+  if (days) {
+    let day = days[dayNumber - 1];
+    day = {
+      ...day,
+      list: selectedList.list as string[],
+      title: selectedList.title,
+    };
+    days[dayNumber - 1] = day;
+
+    return [...days];
+  }
+  return [];
 }

@@ -1,45 +1,44 @@
 import mongoose from 'mongoose';
 
-const localUri = process.env.MONGO;
-const connection = {};
-export default async function connect() {
-  if (connection.isConnected) {
-    console.log('DB is already connected');
-    return;
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO);
+  } catch (error) {
+    throw new Error('Connection error!');
   }
+};
 
-  if (mongoose.connections.length > 0) {
-    connection.isConnected = mongoose.connections[0].readyState;
-    if (connection.isConnected === 1) {
-      console.log('use previous connection');
-      return;
-    }
-    await mongoose.disconnect();
-  }
+export default connect;
 
-  const db = await mongoose.connect(localUri);
-  console.log('? MongoDB Database Connected Successfully');
-  connection.isConnected = db.connections[0].readyState;
-}
-
-export async function disconnectDB() {
-  if (connection.isConnected) {
-    if (process.env.NODE_ENV === 'production') {
-      await mongoose.disconnect();
-      connection.isConnected = false;
-    } else {
-      console.log('not discounted');
-    }
-  }
-}
-
-// const connect = async () => {
-//   try {
-//     console.log('NADADADADADADA');
-//     await mongoose.connect(process.env.MONGO as string);
-//   } catch (error) {
-//     throw new Error('Connection error!');
+// const localUri = process.env.MONGO;
+// const connection = {};
+// export default async function connect() {
+//   if (connection.isConnected) {
+//     console.log('DB is already connected');
+//     return;
 //   }
-// };
 
-// export default connect;
+//   if (mongoose.connections.length > 0) {
+//     connection.isConnected = mongoose.connections[0].readyState;
+//     if (connection.isConnected === 1) {
+//       console.log('use previous connection');
+//       return;
+//     }
+//     await mongoose.disconnect();
+//   }
+
+//   const db = await mongoose.connect(localUri);
+//   console.log('? MongoDB Database Connected Successfully');
+//   connection.isConnected = db.connections[0].readyState;
+// }
+
+// export async function disconnectDB() {
+//   if (connection.isConnected) {
+//     if (process.env.NODE_ENV === 'production') {
+//       await mongoose.disconnect();
+//       connection.isConnected = false;
+//     } else {
+//       console.log('not discounted');
+//     }
+//   }
+// }
