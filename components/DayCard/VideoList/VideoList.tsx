@@ -1,5 +1,5 @@
 'use client';
-import { HTMLAttributes, useContext, useEffect, useState } from 'react';
+import { HTMLAttributes, useContext } from 'react';
 import styles from './videoList.module.css';
 import VideoItem from './VideoItem/VideoItem';
 import { ModalContext } from '@/context/modal.context';
