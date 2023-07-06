@@ -3,7 +3,7 @@
 }
 
 .listContainer {
-  height: calc(100% - 240px);
+  height: calc(100% - 260px);
   overflow-y: scroll;
   overflow-x: hidden;
 }

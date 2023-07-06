@@ -53,6 +53,21 @@ export function updateDayInList(
       ...day,
       list: selectedList.list as string[],
       title: selectedList.title,
+      isInEditMode: false,
+    };
+    days[dayNumber - 1] = day;
+
+    return [...days];
+  }
+  return [];
+}
+
+export function setDayInEditMode(dayNumber: number, days: Day[]): Day[] {
+  if (days) {
+    let day = days[dayNumber - 1];
+    day = {
+      ...day,
+      isInEditMode: !day.isInEditMode,
     };
     days[dayNumber - 1] = day;
 

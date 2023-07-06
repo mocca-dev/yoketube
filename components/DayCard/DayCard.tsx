@@ -18,8 +18,10 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   number: number;
   userEmail: any;
   updateDayInList: any;
+  setDayInEditMode: any;
   title: string;
-  isSearching: Boolean;
+  isSearching: boolean;
+  isInEditMode: boolean;
   list?: string[];
 }
 
@@ -30,9 +32,11 @@ const DayCard = ({
   list,
   number,
   updateDayInList,
+  setDayInEditMode,
   userEmail,
   title,
   isSearching,
+  isInEditMode,
 }: DayCardProps) => {
   const { state, dispatch } = useContext(ModalContext);
 
@@ -71,7 +75,7 @@ const DayCard = ({
 
       <main className={styles.main}>
         <TitleHeader title={title} />
-        {list && list.length ? (
+        {list?.length && !isInEditMode ? (
           <>
             <PlayButton action={() => handlePlayClick()} />
             <VideoList list={list} dayNumber={number} />
@@ -80,7 +84,7 @@ const DayCard = ({
           <LoaderWithText text="Fetching video data" />
         ) : (
           <>
-            {lists && lists.length ? (
+            {lists?.length ? (
               <SelectList
                 lists={lists}
                 dayNumber={number}
@@ -93,12 +97,17 @@ const DayCard = ({
           </>
         )}
         <div className={styles.hiddingPannel}>
-          {state.playedList[number].length}/{list && list.length} played
+          {!isInEditMode && (
+            <>
+              {state.playedList[number].length}/{list?.length} played
+            </>
+          )}
         </div>
         <BackPannel
           reset={() => dispatch({ type: 'RESET_PLAYED', payload: number })}
-          edit={() => updateDay('')}
+          edit={() => setDayInEditMode()}
           right={() => console.log('right')}
+          isInEditMode={isInEditMode}
         />
       </main>
     </div>

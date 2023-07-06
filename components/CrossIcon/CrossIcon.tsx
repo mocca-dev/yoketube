@@ -1,9 +1,9 @@
 const CrossIcon = () => (
-  <svg width="8" height="8" viewBox="0 0 184 184" fill="none">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
     <path
-      d="M16.5653 167.413L167.435 16.5867M16.5653 16.5867L167.435 167.413"
+      d="M1 23L23 1M1 1L23 23"
       stroke="#71717D"
-      strokeWidth="32"
+      strokeWidth="2"
       strokeLinecap="round"
     />
   </svg>

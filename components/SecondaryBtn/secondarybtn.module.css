@@ -13,6 +13,6 @@
 .toTheBottom {
   display: block;
   position: absolute;
-  bottom: 80px;
+  bottom: 130px;
   width: calc(100% - 2 * var(--side-padding));
 }

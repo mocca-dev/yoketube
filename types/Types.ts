@@ -28,6 +28,7 @@ export type Day = {
   listId: string;
   date: string;
   title: string;
+  isInEditMode: boolean;
   list?: string[];
 };
 
