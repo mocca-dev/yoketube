@@ -31,7 +31,10 @@ export async function getListByID(id: string | null) {
   }
 }
 
-export async function setListByUser(user: string, list: List) {
+export async function setListByUser(
+  user: string,
+  data: { list: List; id: string }
+) {
   if (user) {
     const res = await fetch(`/api/lists`, {
       method: 'POST',
@@ -43,7 +46,7 @@ export async function setListByUser(user: string, list: List) {
       },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify(list),
+      body: JSON.stringify(data),
     });
 
     if (!res.ok) {

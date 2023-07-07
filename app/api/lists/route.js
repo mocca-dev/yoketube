@@ -30,12 +30,21 @@ export const GET = async (request) => {
 
 export const POST = async (request) => {
   try {
-    const list = await request.json();
+    const { id, list } = await request.json();
 
     await connect();
+    let res;
 
-    const newList = new List(list);
-    const res = await newList.save();
+    if (id !== '0') {
+      const origialList = await List.findById(id);
+      origialList.title = list.title;
+      origialList.list = list.list;
+
+      res = await origialList.save();
+    } else {
+      const newList = new List(list);
+      res = await newList.save();
+    }
 
     return new NextResponse(JSON.stringify(res), {
       status: 200,

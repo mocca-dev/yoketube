@@ -20,7 +20,7 @@ const VideoList = ({ list, dayNumber }: VideoListProps) => {
       {videoList ? (
         videoList.map((video: any, index: number) => (
           <VideoItem
-            key={video.url}
+            key={index}
             data={video}
             played={state.playedList[dayNumber][index]}
           />

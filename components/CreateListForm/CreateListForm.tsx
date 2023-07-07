@@ -44,7 +44,7 @@ const CreateListForm = ({ id }: CreateListFormProps) => {
 
     let emptyFields: any[] = [];
 
-    for (let index = 1; index < e.target.length; index++) {
+    for (let index = 3; index < e.target.length; index++) {
       const input = e.target[index];
       if (input.tagName === 'INPUT') {
         videoList.push(input.value);
@@ -71,7 +71,10 @@ const CreateListForm = ({ id }: CreateListFormProps) => {
         email: session.data?.user?.email,
         list: videoList,
       };
-      const data = await setListByUser(session.data?.user?.name || '', list);
+      const data = await setListByUser(session.data?.user?.name || '', {
+        list,
+        id,
+      });
       if (data) {
         router.push('/');
       }
