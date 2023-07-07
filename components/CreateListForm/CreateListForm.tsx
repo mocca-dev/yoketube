@@ -1,23 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { HTMLAttributes, useEffect, useState } from 'react';
 import Label from '../Label/Label';
 import TextField from '../TextField/TextField';
 import TextFieldWithDelete from '../TextFieldWithDelete/TextFieldWithDelete';
 import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
 import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
 import styles from './createListForm.module.css';
-import { setListByUser } from '@/app/utils/list';
+import { getListByID, setListByUser } from '@/app/utils/list';
 import { useSession } from 'next-auth/react';
 import { List } from '@/types/Types';
 import { useRouter } from 'next/navigation';
 import LoaderWithText from '../LoaderWithText/LoaderWithText';
 
-const CreateListForm = () => {
-  const [linkList, setLinkList] = useState(['0']);
+interface CreateListFormProps extends HTMLAttributes<HTMLDivElement> {
+  id: string;
+}
+
+const CreateListForm = ({ id }: CreateListFormProps) => {
+  const [linkList, setLinkList] = useState<string[]>(['']);
+  const [title, setTitle] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const session = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    if (id !== '0')
+      getListByID(id).then((list) => {
+        setLinkList(list.list);
+        setTitle(list.title);
+      });
+  }, [id]);
 
   const addLink = (e: any) => {
     e.preventDefault();
@@ -44,7 +57,7 @@ const CreateListForm = () => {
     }
     const hasSomeEmpty = emptyFields.length > 0;
 
-    const titleInput = e.target[0];
+    const titleInput = e.target[1];
 
     if (titleInput.value) {
       titleInput.classList.remove(styles.error);
@@ -94,8 +107,8 @@ const CreateListForm = () => {
             <TextField
               name="name"
               placeholder="Back and legs, Arms and Abs,..."
+              value={title}
             />
-
             <Label text="List of videos" />
             <div className={styles.listContainer}>
               {linkList.map((link) => (
@@ -105,6 +118,7 @@ const CreateListForm = () => {
                   placeholder="https://www.youtube.com/..."
                   deleteAction={(e: any) => handleDelete(e)}
                   disabledDelete={linkList.length === 1}
+                  value={link}
                 />
               ))}
             </div>

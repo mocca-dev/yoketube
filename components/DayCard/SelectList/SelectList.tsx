@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { List } from '@/types/Types';
 import LoaderWithText from '@/components/LoaderWithText/LoaderWithText';
 import { updateListInWeekByUserEmail } from '@/app/utils/list';
+import { useRouter } from 'next/navigation';
 
 interface SelectListProps extends HTMLAttributes<HTMLDivElement> {
   lists: List[];
@@ -25,6 +26,7 @@ const SelectList = ({
 }: SelectListProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<string>();
+  const router = useRouter();
 
   const handleSelectedItem = (id: string) => {
     setSelectedItem(id);
@@ -43,6 +45,10 @@ const SelectList = ({
     setIsLoading(false);
   };
 
+  const handleEditClick = (id: string) => {
+    router.push(`/newList/${id}`);
+  };
+
   return (
     <>
       <div className={styles.mainTitle}>Select a list</div>
@@ -56,6 +62,7 @@ const SelectList = ({
                 key={item._id}
                 label={item.title}
                 onClick={(id: string) => handleSelectedItem(id)}
+                onEditClick={handleEditClick}
                 value={item._id}
               />
             ))
@@ -64,7 +71,7 @@ const SelectList = ({
           )}
         </div>
       )}
-      <Link href={'/newList'}>
+      <Link href={'/newList/0'}>
         <SecondaryBtn
           toTheBottom={true}
           label="+ Add new list"

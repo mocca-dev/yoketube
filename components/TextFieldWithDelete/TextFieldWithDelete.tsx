@@ -10,6 +10,7 @@ interface TextFieldWithDeleteProps extends HTMLAttributes<HTMLDivElement> {
   placeholder: string;
   deleteAction: any;
   disabledDelete: boolean;
+  value: string;
 }
 
 const TextFieldWithDelete = ({
@@ -17,11 +18,12 @@ const TextFieldWithDelete = ({
   placeholder,
   deleteAction,
   disabledDelete,
+  value,
 }: TextFieldWithDeleteProps) => {
   return (
     <>
       <div className={styles.container}>
-        <TextField name={name} placeholder={placeholder} />
+        <TextField name={name} placeholder={placeholder} value={value} />
         <SmallBtn name={name} action={deleteAction} disabled={disabledDelete}>
           <DeleteIcon />
         </SmallBtn>

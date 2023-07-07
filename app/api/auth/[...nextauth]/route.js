@@ -24,6 +24,7 @@ export const authOptions = {
         await connect();
         try {
           const user = await User.findOne({ email: credentials.email });
+
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
               credentials.password,

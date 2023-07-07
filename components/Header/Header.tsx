@@ -16,12 +16,12 @@ const Header = ({}: HeaderProps) => {
   return (
     <header className={styles.header}>
       {pathname === '/' && <WelcomeName />}
-      {pathname === '/newList' && (
+      {pathname.startsWith('/newList') && (
         <span className={styles.title}>
           <Link href={'/'}>
             <LeftArrowIcon />
           </Link>
-          <div className={styles.username}>New list</div>
+          <div className={styles.innerTitle}>New list</div>
         </span>
       )}
       {pathname !== '/login' && pathname !== '/register' && <ProfileButton />}

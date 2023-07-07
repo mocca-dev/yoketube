@@ -2,22 +2,32 @@
   position: relative;
   width: 100%;
   margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .clearBtn {
   position: absolute;
-  right: 0;
-  top: 20%;
+  right: 1px;
+  top: 1px;
   border: none;
   color: white;
-  padding: 16px 20px;
+  padding: 15px 20px;
   border-radius: 13px;
   background: var(--dark-primary);
 }
 
+.clearBtn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.clearBtn svg path {
+  stroke-width: 4;
+}
+
 .input {
   width: 100%;
-  margin-top: 10px;
   background: var(--dark-primary);
   border: none;
   border-radius: 13px;

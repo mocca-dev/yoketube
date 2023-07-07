@@ -1,22 +1,24 @@
 'use client';
+
 import { signIn } from 'next-auth/react';
 import styles from './login.module.css';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import Link from 'next/link';
 import TextField from '@/components/TextField/TextField';
 import GoogleButton from '@/components/LoginRegister/GoogleButton/GoogleButton';
+import Logo from '@/components/Logo/Logo';
 // import TwitterButton from '@/components/LoginRegister/TwitterButton/TwitterButton';
 // import InstagramButton from '@/components/LoginRegister/InstagramButton/InstagramButton';
-import Logo from '@/components/Logo/Logo';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const Login = () => {
-  const [showForm, setShowForm] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const email = e.target[0].value;
-    const password = e.target[1].value;
+    const email = e.target[1].value;
+    const password = e.target[3].value;
+
     signIn('credentials', {
       email,
       password,
@@ -38,7 +40,7 @@ const Login = () => {
         <PrimaryBtn label="Login with email" action={() => setShowForm(true)} />
       ) : ( */}
       <form onSubmit={handleSubmit}>
-        <TextField name="email" placeholder="Email" type="email" />
+        <TextField name="email" placeholder="Email" type="email" value="" />
         <TextField name="password" placeholder="Password" type="password" />
         <PrimaryBtn type="submit" label="Login" />
       </form>
