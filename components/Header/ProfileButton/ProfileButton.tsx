@@ -4,6 +4,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Loader from '@/components/Loader/Loader';
 import NoProfileIcon from '@/components/NoProfileIcon/NoProfileIcon';
+import LoginIcon from '@/components/LoginIcon/LoginIcon';
 
 const ProfileButton = () => {
   const session = useSession();
@@ -19,7 +20,7 @@ const ProfileButton = () => {
           onClick={() => signOut()}
         >
           <Image
-            src={session.data?.user?.image || '/profile1.png'}
+            src={session.data?.user?.image || '/logout.svg'}
             className={styles.profilePic}
             height={50}
             width={50}
@@ -37,7 +38,7 @@ const ProfileButton = () => {
           className={styles.noBackground}
           onClick={() => router.push('/login')}
         >
-          <NoProfileIcon />
+          <LoginIcon />
         </button>
       )}
     </>

@@ -48,64 +48,7 @@ const useWeekWithLists = (): UseWeekWithLists => {
     if (session.status === 'authenticated') {
       getUserDataAndLists();
     } else {
-      setDays([
-        {
-          name: 'Monday',
-          number: 1,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-        {
-          name: 'Tuesday',
-          number: 2,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-        {
-          name: 'Wednesday',
-          number: 3,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-        {
-          name: 'Thursday',
-          number: 4,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-        {
-          name: 'Friday',
-          number: 5,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-        {
-          name: 'Saturday',
-          number: 6,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-        {
-          name: 'Sunday',
-          number: 0,
-          listId: '',
-          date: '',
-          title: '',
-          isInEditMode: true,
-        },
-      ]);
+      setDays([]);
     }
   }, [session.data?.user?.email, session.status]);
 

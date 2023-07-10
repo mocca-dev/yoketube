@@ -2,10 +2,10 @@
 
 import { useSession } from 'next-auth/react';
 import DayCard from '../DayCard/DayCard';
-import LoaderWithText from '../LoaderWithText/LoaderWithText';
 import { setDayInEditMode, updateDayInList } from '@/app/utils/week';
 import useWeekWithLists from '@/hooks/useWeekWithLists';
 import useLists from '@/hooks/useLists';
+import WelcomeMsg from '../WelcomeMsg/WelcomeMsg';
 
 export const Week = () => {
   const { isSearching, days, setDays } = useWeekWithLists();
@@ -14,7 +14,7 @@ export const Week = () => {
 
   return (
     <>
-      {days ? (
+      {days?.length ? (
         days.map((day) => (
           <DayCard
             key={day.name}
@@ -34,7 +34,7 @@ export const Week = () => {
           />
         ))
       ) : (
-        <LoaderWithText text="Fetching week data" />
+        <WelcomeMsg />
       )}
     </>
   );

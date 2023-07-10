@@ -18,5 +18,13 @@
 .noBackground svg {
   height: 30px;
   width: 30px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+}
+
+.smallIcon img {
+  border-radius: 0%;
+}
+
+.smallIcon img svg {
+  fill: white;
 }
