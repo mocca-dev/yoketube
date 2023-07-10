@@ -4,7 +4,7 @@ import styles from './dayCard.module.css';
 import VideoList from './VideoList/VideoList';
 import PlayButton from './PlayButton/PlayButton';
 import BackPannel from './BackPannel/BackPannel';
-import { List } from '@/types/Types';
+import { LinkItem, List } from '@/types/Types';
 import SelectList from './SelectList/SelectList';
 import { goToToday } from '@/app/utils/week';
 import { ModalContext } from '@/context/modal.context';
@@ -22,7 +22,7 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   isSearching: boolean;
   isInEditMode: boolean;
-  list?: string[];
+  list?: LinkItem[];
 }
 
 const DayCard = ({
@@ -45,11 +45,11 @@ const DayCard = ({
   }, [name]);
 
   const handlePlayClick = () => {
-    const onlyVideoIDList = list?.map((video: string) => {
-      if (video.startsWith('https://youtu.be/')) {
-        return video.replace('https://youtu.be/', '');
+    const onlyVideoIDList = list?.map(({ url }) => {
+      if (url.startsWith('https://youtu.be/')) {
+        return url.replace('https://youtu.be/', '');
       }
-      return video.slice(video.indexOf('v=') + 2);
+      return url.slice(url.indexOf('v=') + 2);
     });
 
     dispatch({ type: 'SET_CURRENTDAY', payload: number });

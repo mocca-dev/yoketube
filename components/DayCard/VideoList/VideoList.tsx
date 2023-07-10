@@ -5,9 +5,10 @@ import VideoItem from './VideoItem/VideoItem';
 import { ModalContext } from '@/context/modal.context';
 import LoaderWithText from '@/components/LoaderWithText/LoaderWithText';
 import useVideoList from '@/hooks/useVideoList';
+import { LinkItem } from '@/types/Types';
 
 interface VideoListProps extends HTMLAttributes<HTMLDivElement> {
-  list: string[];
+  list: LinkItem[];
   dayNumber: number;
 }
 

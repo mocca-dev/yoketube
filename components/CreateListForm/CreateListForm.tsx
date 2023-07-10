@@ -9,7 +9,7 @@ import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
 import styles from './createListForm.module.css';
 import { getListByID, setListByUser } from '@/app/utils/list';
 import { useSession } from 'next-auth/react';
-import { List } from '@/types/Types';
+import { LinkItem, List } from '@/types/Types';
 import { useRouter } from 'next/navigation';
 import LoaderWithText from '../LoaderWithText/LoaderWithText';
 
@@ -18,7 +18,7 @@ interface CreateListFormProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const CreateListForm = ({ id }: CreateListFormProps) => {
-  const [linkList, setLinkList] = useState<string[]>(['']);
+  const [linkList, setLinkList] = useState<LinkItem[]>([]);
   const [title, setTitle] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const session = useSession();
@@ -34,20 +34,20 @@ const CreateListForm = ({ id }: CreateListFormProps) => {
 
   const addLink = (e: any) => {
     e.preventDefault();
-    setLinkList([...linkList, linkList.length.toString()]);
+    setLinkList([...linkList, { url: '', _id: linkList.length.toString() }]);
   };
 
   const handleSubmit = async (e: any) => {
     setIsLoading(true);
     e.preventDefault();
-    let videoList: string[] = [];
+    let videoList: LinkItem[] = [];
 
     let emptyFields: any[] = [];
 
     for (let index = 3; index < e.target.length; index++) {
       const input = e.target[index];
       if (input.tagName === 'INPUT') {
-        videoList.push(input.value);
+        videoList.push({ url: input.value });
         if (input.value === '') {
           emptyFields.push(input.classList.add(styles.error));
         } else {
@@ -58,7 +58,6 @@ const CreateListForm = ({ id }: CreateListFormProps) => {
     const hasSomeEmpty = emptyFields.length > 0;
 
     const titleInput = e.target[1];
-
     if (titleInput.value) {
       titleInput.classList.remove(styles.error);
     } else {
@@ -82,21 +81,10 @@ const CreateListForm = ({ id }: CreateListFormProps) => {
     setIsLoading(false);
   };
 
-  const handleDelete = (e: any) => {
+  const handleDelete = (e: any, id: any) => {
     e.preventDefault();
-    let id = '-1';
-    const nodeName = e.target.nodeName.toLowerCase();
-
-    if (nodeName === 'path') {
-      id = e.target.parentNode.parentNode.parentNode.id;
-    } else if (nodeName === 'svg') {
-      id = e.target.parentNode.parentNode.id;
-    } else {
-      id = e.target.id;
-    }
-
     if (linkList.length > 1)
-      setLinkList(linkList.filter((idLink) => idLink !== id));
+      setLinkList(linkList.filter((link) => link._id !== id));
   };
 
   return (
@@ -116,12 +104,12 @@ const CreateListForm = ({ id }: CreateListFormProps) => {
             <div className={styles.listContainer}>
               {linkList.map((link) => (
                 <TextFieldWithDelete
-                  key={link}
-                  name={link.toString()}
+                  key={link._id}
+                  name={link.url.toString()}
                   placeholder="https://www.youtube.com/..."
-                  deleteAction={(e: any) => handleDelete(e)}
+                  deleteAction={(e: any) => handleDelete(e, link._id)}
                   disabledDelete={linkList.length === 1}
-                  value={link}
+                  value={link.url}
                 />
               ))}
             </div>

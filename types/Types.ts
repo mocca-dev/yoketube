@@ -17,7 +17,7 @@ export interface EnhancedVideo extends Video {
 
 export type List = {
   title: string;
-  list: Video[] | string[];
+  list: Video[] | LinkItem[];
   email?: string | null;
   _id?: string;
 };
@@ -36,4 +36,9 @@ export type TWeek = {
   name: string;
   number: Number;
   listId: string;
+};
+
+export type LinkItem = {
+  _id?: string;
+  url: string;
 };

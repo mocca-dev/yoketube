@@ -2,6 +2,13 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
+const linkListSchema = new Schema({
+  url: {
+    type: String,
+    required: true,
+  },
+});
+
 const listSchema = new Schema(
   {
     title: {
@@ -9,7 +16,7 @@ const listSchema = new Schema(
       required: true,
     },
     list: {
-      type: [String],
+      type: [linkListSchema],
       required: true,
     },
     email: {
