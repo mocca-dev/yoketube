@@ -29,7 +29,7 @@ export type Day = {
   date: string;
   title: string;
   isInEditMode: boolean;
-  list?: string[];
+  list?: LinkItem[];
 };
 
 export type TWeek = {

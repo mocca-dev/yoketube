@@ -1,4 +1,4 @@
-import { List, Day } from '@/types/Types';
+import { List, Day, LinkItem } from '@/types/Types';
 
 export async function getByUser(user: string | null) {
   if (user) {
@@ -51,7 +51,7 @@ export function updateDayInList(
     let day = days[dayNumber - 1];
     day = {
       ...day,
-      list: selectedList.list as string[],
+      list: selectedList.list as LinkItem[],
       title: selectedList.title,
       isInEditMode: false,
     };
