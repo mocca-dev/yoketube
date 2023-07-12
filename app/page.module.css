@@ -1,9 +1,12 @@
 .body {
+  position: relative;
   background-color: var(--bg-dark);
   padding: 0px var(--side-padding);
   padding-top: 74px;
   padding-bottom: 15px;
   height: 100%;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .main {

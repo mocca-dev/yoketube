@@ -4,10 +4,10 @@
   align-items: center;
   top: 0;
   left: 0;
-  width: 100vw;
   padding: 10px var(--side-padding);
   justify-content: space-between;
   height: 74px;
+  width: 100%;
 }
 
 .profilePic {
