@@ -55,7 +55,7 @@
 ## About The Project
 
 <div align="center">
-  <img src="readmeImgs/yoketube-main.png" alt="Logo" height="400">
+  <img src="readmeImgs/main2.png" alt="Logo" height="400">
 </div>
 <br>
 <br>
