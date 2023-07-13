@@ -84,7 +84,7 @@ This app is made with NextJS so the installation process is simple.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/mocca-dev/lot.git
+   git clone https://github.com/mocca-dev/yoketube
    ```
 2. Install NPM packages
    ```sh
