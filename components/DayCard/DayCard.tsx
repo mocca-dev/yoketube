@@ -21,6 +21,7 @@ interface DayCardProps extends HTMLAttributes<HTMLDivElement> {
   setDayInEditMode: any;
   title: string;
   isSearching: boolean;
+  isSearchingLists: boolean;
   isInEditMode: boolean;
   list?: LinkItem[];
 }
@@ -36,6 +37,7 @@ const DayCard = ({
   userEmail,
   title,
   isSearching,
+  isSearchingLists,
   isInEditMode,
 }: DayCardProps) => {
   const { state, dispatch } = useContext(ModalContext);
@@ -84,7 +86,7 @@ const DayCard = ({
           <LoaderWithText text="Fetching video data" />
         ) : (
           <>
-            {lists?.length ? (
+            {!isSearchingLists ? (
               <SelectList
                 lists={lists}
                 dayNumber={number}
@@ -99,7 +101,7 @@ const DayCard = ({
         <div className={styles.hiddingPannel}>
           {!isInEditMode && (
             <>
-              {state.playedList[number].length}/{list?.length} played
+              {state.playedList[number - 1].length}/{list?.length} played
             </>
           )}
         </div>

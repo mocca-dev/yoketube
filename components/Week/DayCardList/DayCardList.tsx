@@ -9,7 +9,7 @@ import LoaderWithText from '@/components/LoaderWithText/LoaderWithText';
 
 export const DayCardList = () => {
   const { isSearching, days, setDays } = useWeekWithLists();
-  const lists = useLists();
+  const { isSearching: isSearchingLists, lists } = useLists();
   const session = useSession();
 
   return (
@@ -26,6 +26,7 @@ export const DayCardList = () => {
             userEmail={session.data?.user?.email}
             title={day.title}
             isSearching={isSearching}
+            isSearchingLists={isSearchingLists}
             isInEditMode={day.isInEditMode}
             setDayInEditMode={() => setDays(setDayInEditMode(day.number, days))}
             updateDayInList={(id: string, number: number) =>
@@ -34,7 +35,7 @@ export const DayCardList = () => {
           />
         ))
       ) : (
-        <LoaderWithText text="Fetching week data..." />
+        <LoaderWithText text="Fetching week data" />
       )}
     </>
   );

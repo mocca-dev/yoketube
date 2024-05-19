@@ -3,7 +3,6 @@ import styles from './profileButton.module.css';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Loader from '@/components/Loader/Loader';
-import NoProfileIcon from '@/components/NoProfileIcon/NoProfileIcon';
 import LoginIcon from '@/components/LoginIcon/LoginIcon';
 
 const ProfileButton = () => {

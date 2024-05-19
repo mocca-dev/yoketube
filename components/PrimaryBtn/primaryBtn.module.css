@@ -1,5 +1,7 @@
 .container {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
   border: none;
   padding: 16px;
@@ -8,6 +10,11 @@
   background: var(--primary-linear-gradient);
   width: 100%;
   margin-top: 20px;
+  cursor: pointer;
+}
+
+.container:active {
+  opacity: 0.5;
 }
 
 .toTheBottom {
@@ -20,4 +27,12 @@
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.isLoading {
+  padding: 11px;
+}
+
+.container svg {
+  height: 30px;
 }

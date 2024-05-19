@@ -21,7 +21,7 @@ export const POST = async (request) => {
       { name: 'Thursday', number: 4, listId: '' },
       { name: 'Friday', number: 5, listId: '' },
       { name: 'Saturday', number: 6, listId: '' },
-      { name: 'Sunday', number: 0, listId: '' },
+      { name: 'Sunday', number: 7, listId: '' },
     ],
   });
 

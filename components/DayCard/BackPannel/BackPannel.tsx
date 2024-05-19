@@ -12,20 +12,18 @@ interface BackPannelProps extends HTMLAttributes<HTMLDivElement> {
   isInEditMode: boolean;
 }
 
-const BackPannel = ({ reset, edit, right, isInEditMode }: BackPannelProps) => {
-  return (
-    <div className={styles.container}>
-      <div className={styles.buttonsBar}>
-        <button className={styles.buttonIcon} onClick={reset}>
-          <ResetIcon />
-        </button>
-        <EditBtn action={edit} isInEditMode={isInEditMode} />
-        <button className={styles.buttonIcon} onClick={right}>
-          <RightArrowIcon />
-        </button>
-      </div>
+const BackPannel = ({ reset, edit, right, isInEditMode }: BackPannelProps) => (
+  <div className={styles.container}>
+    <div className={styles.buttonsBar}>
+      <button className={styles.buttonIcon} onClick={reset}>
+        <ResetIcon />
+      </button>
+      <EditBtn action={edit} isInEditMode={isInEditMode} />
+      <button className={styles.buttonIcon} onClick={right}>
+        <RightArrowIcon />
+      </button>
     </div>
-  );
-};
+  </div>
+);
 
 export default BackPannel;
