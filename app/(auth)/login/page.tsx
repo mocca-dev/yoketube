@@ -1,28 +1,38 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 import styles from './login.module.css';
 import PrimaryBtn from '@/components/PrimaryBtn/PrimaryBtn';
 import Link from 'next/link';
 import TextField from '@/components/TextField/TextField';
-import GoogleButton from '@/components/LoginRegister/GoogleButton/GoogleButton';
 import Logo from '@/components/Logo/Logo';
+import { useSearchParams } from 'next/navigation';
+import ErrorMsg from '@/components/ErrorMsg/ErrorMsg';
+// import GoogleButton from '@/components/LoginRegister/GoogleButton/GoogleButton';
 // import TwitterButton from '@/components/LoginRegister/TwitterButton/TwitterButton';
 // import InstagramButton from '@/components/LoginRegister/InstagramButton/InstagramButton';
-// import { useState } from 'react';
 
 const Login = () => {
   // const [showForm, setShowForm] = useState(false);
+  const [isSendingData, setIsSendinData] = useState(false);
+  const searchParams = useSearchParams();
+  const error: string = searchParams.get('error')?.toString() || '';
+  console.log(error);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const email = e.target[1].value;
-    const password = e.target[3].value;
+    setIsSendinData(true);
+    const email = e.target[1]?.value;
+    const password = e.target[3]?.value;
 
-    signIn('credentials', {
-      email,
-      password,
-    });
+    if (email && password) {
+      const siginData = await signIn('credentials', {
+        email,
+        password,
+      });
+    }
+    setIsSendinData(false);
   };
 
   return (
@@ -42,7 +52,13 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <TextField name="email" placeholder="Email" type="email" value="" />
         <TextField name="password" placeholder="Password" type="password" />
-        <PrimaryBtn type="submit" label="Login" />
+        {error ? <ErrorMsg label={error} /> : null}
+        <PrimaryBtn
+          type="submit"
+          label="Login"
+          disabled={isSendingData}
+          isLoading={isSendingData}
+        />
       </form>
       {/* )} */}
       <Link href="/register" className={styles.link}>

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  border: none;
+  padding: 16px;
+  border-radius: 13px;
+  color: var(--fg-primary);
+  background: var(--bg-error);
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+}

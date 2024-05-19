@@ -11,10 +11,10 @@ const Register = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const name = e.target[0].value;
-    const email = e.target[1].value;
-    const password = e.target[2].value;
-    const repassword = e.target[3].value;
+    const name = e.target[1].value;
+    const email = e.target[3].value;
+    const password = e.target[5].value;
+    const repassword = e.target[7].value;
 
     if (name) {
       try {
@@ -29,7 +29,7 @@ const Register = () => {
         res.status === 201 &&
           router.push('/login?success=Account has been created');
       } catch (error) {
-        // console.log(error);
+        console.log('Register Error:', error);
       }
     }
   };
